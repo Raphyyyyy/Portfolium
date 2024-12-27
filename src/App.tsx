@@ -5,8 +5,7 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom'; // Impor
 import Home from './pages/Home';
 import Projeto from './pages/Projeto';
 import NotFound from './pages/NotFound';
-import Login from './pages/Login';
-import AddProjeto from './pages/AddProjeto';
+
 import { ProjectProvider } from "./context/ProjectContext";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";

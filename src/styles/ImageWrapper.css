@@ -4,6 +4,9 @@
 
 .mask {
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   top: 0;
   left: 0;
   width: 100%;
@@ -11,4 +14,11 @@
   background-color: rgb(28, 72, 142);
   opacity: 1;
   pointer-events: none;
+}
+
+@media screen and (max-width: 768px) {
+/* .mask {
+  width: 80%;
+} */
+
 }

@@ -31,6 +31,10 @@ function Projeto() {
   const image3 = projeto.metadata?.image3;
   const image4 = projeto.metadata?.image4;
 
+  const baseURL = "https://raphyyyyy.github.io/Portfolium";
+  const arrumaURL = (path) => `${baseURL}/${path}`; //isso arruma a url pro gtihub pages
+
+
   return (
     <div className="ProjetoIndPai">
       <i className="fa-solid fa-arrow-left" onClick={voltar}></i>
@@ -39,7 +43,7 @@ function Projeto() {
         <img src={degrade} className="Degrade" alt="Degrade" />
         {projeto.metadata?.headerimage && (
           <img
-            src={projeto.metadata.headerimage}
+            src={arrumaURL(projeto.metadata.headerimage)}
             className="HeaderImage"
             alt={projeto.title}
           />
@@ -79,10 +83,10 @@ function Projeto() {
 
       <div className="grid-pai">
         <div className="grid-container">
-          {image1 && <img src={image1} alt="Imagem 1 do projeto" />}
-          {image2 && <img src={image2} alt="Imagem 2 do projeto" />}
-          {image3 && <img src={image3} alt="Imagem 3 do projeto" />}
-          {image4 && <img src={image4} alt="Imagem 4 do projeto" />}
+          {image1 && <img src={arrumaURL(image1)} alt="Imagem 1 do projeto" />}
+          {image2 && <img src={arrumaURL(image2)} alt="Imagem 2 do projeto" />}
+          {image3 && <img src={arrumaURL(image3)} alt="Imagem 3 do projeto" />}
+          {image4 && <img src={arrumaURL(image4)} alt="Imagem 4 do projeto" />}
         </div>
       </div>
     </div>

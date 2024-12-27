@@ -21,7 +21,8 @@ function BackgroundText({ texto }) {
         >
           {texto}
         </motion.p>
-        {Array(150).fill().map((_, index) => ( //repete 150x o texto
+        {/* array 150 */}
+        {Array(250).fill().map((_, index) => ( //repete 150x o texto
           <React.Fragment key={index}>
             <p>{texto}</p>
               {index % 5 === 0 ? ( //se o index for divisivel por 5 ele pisca

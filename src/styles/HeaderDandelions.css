@@ -1,45 +1,58 @@
+/* Degrade */
+.degradeHeader{
+  width: 100vw;
+  height: 100vh;
+}
+
+
 /* Ordem de linhas */
 .linha1 {
   position: absolute;
-  width: 100%;
+  width: 550rem;
   bottom: 70rem;
   z-index: -1;
 }
 
 .linha2 {
   position: absolute;
-  width: 100%;
+  width: 150rem;
   bottom: 75rem;
   left: 5rem;
   z-index: -2;
 }
 .linha3 {
   position: absolute;
-  width: 100%;
+  width: 150rem;
   bottom: 80rem;
   z-index: -3;
 }
 
 .linha4 {
   position: absolute;
-  width: 100%;
+  width: 250rem;
   bottom: 95rem;
   z-index: -4;
 }
 
 @media screen and (max-width: 768px) {
+  .linha1 {
+  position: absolute;
+  width: 40rem;
+  bottom: 20rem;
+  z-index: -1;
+  }
   .linha2 {
-    width: 130%;
+    width: 40rem;
     bottom: 60rem;
     left: 5rem;
   }
   .linha3 {
-    width: 130%;
+    width: 40rem;
     bottom: 65rem;
     right: 5rem;
   }
   .linha4 {
-    width: 130%;
+    width: 40rem;
     bottom: 70rem;
   }
 }
@@ -57,7 +70,7 @@
 .dandelionBaseF,
 .dandelionBaseG,
 .dandelionBaseH {
-  width: 40%;
+  width: 55rem;
   position: absolute;
   top: 25rem;
 }
@@ -113,12 +126,12 @@
   .dandelionBaseF,
   .dandelionBaseG,
   .dandelionBaseH {
-    width: 150%;
+    width: 45rem;
     /* top: 1rem; */
   }
 
   .linha1 {
-    bottom: 60rem;
+    bottom: 70rem;
   }
   .linha2 {
     bottom: 73rem;
