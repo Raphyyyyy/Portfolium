@@ -83,8 +83,10 @@
 @media screen and (max-width: 768px) {
   .conteiner-card {
     width: 10rem;
-    height: 12rem;
+    height: 11rem;
     padding-bottom: 0.1rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.48);
+    margin-left: 1rem;
   }
 
   .conteiner-card img {
@@ -105,10 +107,12 @@
   }
 
   .botao-card button {
+    display: none;
     font-size: 0.5rem;
     line-height: 2rem;
-    padding-bottom: 0.5rem;
-    margin-top: 1rem;
+    padding-bottom: 1rem;
+    /* margin-top: 1.2rem; */
     width: 10rem;
+    margin-bottom: -5rem;
   }
 }

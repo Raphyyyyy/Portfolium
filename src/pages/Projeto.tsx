@@ -4,6 +4,7 @@ import { useProjects } from "../context/ProjectContext";
 import degrade from "../assets/Projetos/Degrade.png";
 import "../styles/Projeto.css";
 import "../App.css";
+import Slider from "../components/Slider"; 
 
 function Projeto() {
   const { slug } = useParams(); // Pega o parâmetro slug da URL
@@ -11,7 +12,7 @@ function Projeto() {
 
   // Certifique-se de acessar a estrutura correta dos dados
   const projeto = projectData.find((projeto) => projeto.slug === slug); // Pega o projeto certo
-  console.table(projectData);
+  //console.table(projectData);
 
   const navigate = useNavigate();
   const voltar = () => {
@@ -31,8 +32,11 @@ function Projeto() {
   const image3 = projeto.metadata?.image3;
   const image4 = projeto.metadata?.image4;
 
+  const imagens = [image1, image2, image3, image4];
+
   const baseURL = "https://raphyyyyy.github.io/Portfolium";
-  const arrumaURL = (path) => `${baseURL}/${path}`; //isso arruma a url pro gtihub pages
+  const arrumaURL = (path) => `${baseURL}/${path}`; 
+  //isso arruma a url pro gtihub pages
 
 
   return (
@@ -81,14 +85,16 @@ function Projeto() {
         </a>
       </div>
 
-      <div className="grid-pai">
+      {/* <div className="grid-pai">
         <div className="grid-container">
           {image1 && <img src={arrumaURL(image1)} alt="Imagem 1 do projeto" />}
           {image2 && <img src={arrumaURL(image2)} alt="Imagem 2 do projeto" />}
           {image3 && <img src={arrumaURL(image3)} alt="Imagem 3 do projeto" />}
           {image4 && <img src={arrumaURL(image4)} alt="Imagem 4 do projeto" />}
         </div>
-      </div>
+      </div> */}
+
+      <Slider imagens={imagens}/>
     </div>
   );
 }

@@ -3,6 +3,9 @@
   padding: 0;
 }
 
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+
 .fundo{
   position: absolute;
   top: 0;
