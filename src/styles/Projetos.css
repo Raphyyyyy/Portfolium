@@ -42,7 +42,7 @@ a{
   .projetos-pai ul {
     grid-template-columns: repeat(2, 0.35fr);
     gap: 0.2rem; 
-    left: 2rem; 
+    left: 3.32rem; 
     top: 2rem;
   }
 

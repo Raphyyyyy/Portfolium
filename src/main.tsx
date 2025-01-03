@@ -8,8 +8,9 @@ import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 
-    <BrowserRouter basename="/Portfolium">
-      <App />
-    </BrowserRouter>
+  <BrowserRouter basename="/Portfolium">
+    <App />
+  </BrowserRouter>,
+
 
 );

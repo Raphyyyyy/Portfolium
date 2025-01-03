@@ -5,11 +5,14 @@ import dandelion_c40 from "../assets/cB.png";
 import dandelion_c60 from "../assets/cC.png";
 import dandelion_c80 from "../assets/c80.png";
 
+import degradeHeader from "../../public/assets/degrade header.png"
+
 import "../styles/HeaderDandelions.css";
 
 function HeaderDandelions() {
   return (
     <div>
+              <img src={degradeHeader} className="degradeHeader" />
       <div className="linha1">
         <img className="dandelionBaseA" src={dandelion_c} />
         <img className="dandelionBaseB" src={dandelion_c} />

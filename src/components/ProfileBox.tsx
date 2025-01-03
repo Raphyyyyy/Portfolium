@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/ProfileBox.css";
 import foto from "../assets/foto2.png";
 import github from "../assets/icones/github-logo.png";
@@ -8,6 +8,25 @@ import { motion } from "framer-motion";
 import ImageWrapper from "./ImageWrapper";
 
 function ProfileBox() {
+  const [fade, setFade] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener("resize", handleResize);
+
+    const timer = setTimeout(() => {
+      setFade(true);
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div className="container">
       <motion.div
@@ -23,21 +42,20 @@ function ProfileBox() {
         }}
         className="background"
       ></motion.div>
-      {/*fundo azul */}
+      {/* Fundo azul */}
 
-
-      <ImageWrapper style={{ borderRadius: '50%' }}>
-          {/* Imagem do perfil */}
-          <img
-            src={foto}
-            alt="foto de desenvolvedor front end"
-            className="foto-perfil"
-          />
+        
+      <ImageWrapper style={{ borderRadius: '50%', width: isMobile ? '70%' : 'auto' }}>
+        {/* Imagem do perfil */}
+        <img
+          src={foto}
+          alt="foto de desenvolvedor front end"
+          className="foto-perfil"
+        />
       </ImageWrapper>
 
-
       <motion.div
-        className="mask"
+        className="texto1"
         initial={{ opacity: 0 }}
         whileInView={{
           opacity: [0, 1],
@@ -47,7 +65,6 @@ function ProfileBox() {
           ease: "easeInOut",
           delay: 0.7, // Atraso antes de começar
         }}
-        className="texto1"
       >
         <h1>
           <br />
@@ -58,7 +75,7 @@ function ProfileBox() {
       </motion.div>
 
       <motion.div
-        className="mask"
+        className="texto2"
         initial={{ opacity: 0 }}
         whileInView={{
           opacity: [0, 1],
@@ -68,15 +85,11 @@ function ProfileBox() {
           ease: "easeInOut",
           delay: 0.7, // Atraso antes de começar
         }}
-        className="texto2"
       >
-        Criativo e entusiasta de soluções inovadoras no desenvolvimento de
-        software, desenvolvi de forma autodidata competências em programação e
-        design, acredito que um bom design é aquele que deixa claro seu objetivo
-        assim como uma programação, organizada e fácil de ler.{<br />}
-        {<br />}
-        Sou comprometido com o aprendizado continuo e a busca por novos
-        desafios.
+        Criativo e entusiasta de soluções inovadoras no desenvolvimento de software, desenvolvi de forma autodidata competências em programação e design, acredito que um bom design é aquele que deixa claro seu objetivo assim como uma programação, organizada e fácil de ler.
+        <br />
+        <br />
+        Sou comprometido com o aprendizado contínuo e a busca por novos desafios.
       </motion.div>
       <div className="icone">
         <a

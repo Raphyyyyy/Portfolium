@@ -1,0 +1,49 @@
+.carrosel-pai{
+  cursor: grab;
+  overflow: hidden;
+  /* background-color: blueviolet; */
+  width: 100%;
+}
+
+.carrosel-filho{
+  display: flex;
+  flex-direction: row;
+  /* background-color: azure; */
+  width: auto;
+}
+
+.carrosel-imagem{
+  display: flex;
+}
+
+.carrosel-imagem img{
+  pointer-events: none; 
+  width: 90%;
+  height: auto;
+  border-radius: 15%;
+  margin:0 1%;
+}
+
+.sliderPai {
+  position: relative;
+}
+
+.seta-esquerda, .seta-direita {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.seta-esquerda {
+  left: 10px;
+  background-color: none !important;
+}
+
+.seta-direita {
+  right: 10px;
+}

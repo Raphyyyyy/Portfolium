@@ -6,6 +6,8 @@
   font-style: normal;
 }
 
+
+
 .container {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
@@ -118,22 +120,44 @@
 
 @media screen and (max-width: 768px) {
   .container {
-    width: 68%;
+    margin-left: 1rem;
+    width: 70vw;
     height: 80%;
     top: 10rem;
   }
 
-  .background {
-    height: 95%;
-    top: 1.5rem;
+  .foto-perfil {
+    width: 7rem;
+    height: auto;
   }
+
+  .background {
+    height: 90%;
+    width: 90%;
+    top: 1.5rem;
+    left: 2.3rem;
+    padding: 1rem;
+  }
+
+
+.texto1 {
+    position: absolute;
+    right: 0.3%;/*0.4*/
+    top: 2rem;
+  }
+
+  .texto1 hr{
+    width: 80%;
+  }
+
   .texto1 h1 {
     font-size: 1.2rem;
   }
 
   .texto1 h2 {
+    padding: 0;
     font-size: 0.5rem;
-    letter-spacing: 0.2rem;
+    letter-spacing: 0rem;
     margin: 0.5rem 0 0 0;
   }
 

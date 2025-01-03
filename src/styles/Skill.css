@@ -1,6 +1,7 @@
 .SkillDiv {
   position: relative;
   height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,6 +40,7 @@ li {
 .UlDiv {
   position: absolute;
   top: 7rem;
+
 }
 
 .background_projetos {
@@ -48,12 +50,13 @@ li {
 
 @media screen and (max-width: 768px) {
  .SkillDiv {
-    height: 100%;
+    height: 90%;
   }
 
 
   ul {
-    width: 90%;
+    width: 80%;
+    
   }
 
   .SkillDiv h1  {
@@ -71,18 +74,22 @@ li {
   .UlDiv {
     top: 0;
     left: 2rem;
+    
   }
 
-    ul {
+  .UlDiv ul {
       padding: 0;
+      margin:0;
+      border: 0;
       width: 100%;
       height: 100%;
 
   }
 
+
   .background_projetos {
     top: 0; 
     left: 0;
-    height: 83.3vh;
+    height: 100vh;
   }
 }
