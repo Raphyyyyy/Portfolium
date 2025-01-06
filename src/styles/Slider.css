@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: row;
   /* background-color: azure; */
-  width: auto;
+  width: 360vw;
 }
 
 .carrosel-imagem{
@@ -18,8 +18,8 @@
 
 .carrosel-imagem img{
   pointer-events: none; 
-  width: 90%;
-  height: auto;
+  width: 90vw;
+  height: 100%;
   border-radius: 15%;
   margin:0 1%;
 }
@@ -30,20 +30,38 @@
 
 .seta-esquerda, .seta-direita {
   position: absolute;
-  top: 50%;
+  top: 40%;
   transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.8);
+  /* background-color: rgba(255, 255, 255, 0.8); */
   border: none;
-  padding: 10px;
   cursor: pointer;
   z-index: 10;
+  pointer-events: none;
+}
+
+.seta-esquerda i, .seta-direita i{
+  color: rgba(0, 0, 0, 0.217);
 }
 
 .seta-esquerda {
-  left: 10px;
-  background-color: none !important;
+  left: 1%;
 }
 
 .seta-direita {
-  right: 10px;
+  left: 92%;
+}
+
+@media (max-width: 768px) {
+.carrosel-filho{
+  width: 820vw;
+}
+.seta-direita {
+  left: 85%;
+}
+
+.seta-esquerda, .seta-direita {
+  top: 30%;
+}
+
+
 }
