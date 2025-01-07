@@ -10,7 +10,7 @@ function Projeto() {
   const { slug } = useParams(); // Pega o parâmetro slug da URL
   const projectData = useProjects(); // Pega os dados do contexto
 
-  // Certifique-se de acessar a estrutura correta dos dados
+  // acessa a estrutura correta dos dados
   const projeto = projectData.find((projeto) => projeto.slug === slug); // Pega o projeto certo
   //console.table(projectData);
 

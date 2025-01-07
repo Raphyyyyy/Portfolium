@@ -11,14 +11,14 @@
   overflow: hidden;
 }
 
-.profile-pai .sobreMim {
+.profile-pai .sobreMim h1{
   position: absolute;
-  writing-mode: vertical-rl; 
-  transform: translateX(130%) translateY(12%) rotate(180deg); 
+  writing-mode: vertical-rl;   
+  transform: translateX(170%) translateY(7%) rotate(180deg);
   left: 0rem; 
-  top: -1.5rem; 
+  top: .5rem; 
   margin: 0; 
-  font-size: 3vw;
+  font-size: 5vw;
   font-family: "Archivo Black", sans-serif;
   color: rgb(28, 72, 142);
 }
@@ -54,21 +54,20 @@
   color: rgba(237, 237, 237, 1);
 }
 
-
 @media screen and (max-width: 768px) {
 .profile-pai{
   height: 80vh;
 }
-  .profile-pai .sobreMim {
+  .profile-pai .sobreMim h1{
     writing-mode: vertical-rl; 
     transform: rotate(180deg); 
     width: 100%;
-    font-size: 2.5rem;
+    font-size: 4.5rem;
     text-wrap: nowrap;
-    right: 5rem;
+    right: 0rem;
     left: 0.11rem;
-    top: 3.9rem; 
-    transform: translateX(-5%) translateY(1%) rotate(180deg); 
+    top: 0.9rem; 
+    transform: translateX(-3%) translateY(12%) rotate(180deg); 
   }
 
   .ProfileDiv {

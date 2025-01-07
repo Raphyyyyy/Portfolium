@@ -13,9 +13,9 @@
   grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
   grid-template-rows: auto; /* 3 linhas iguais */
   gap: 10px;
-  width: 30%; /* O grid ocupa 60% da largura da tela */
-  margin: 0 auto; /* Centraliza o grid horizontalmente */
-  height: 30%; /* O grid ocupará a altura total da tela */
+  width: 60%; /* O grid ocupa 60% da largura da tela */
+  margin: 0 0rem 0 20rem; 
+  height: 30%;
   position: relative; /* Para controlar o z-index dos filhos */
 }
 
@@ -23,8 +23,9 @@
   position: absolute;
   top: 3rem;
   left: 1rem;
-  width: 105%;
+  width: 100%;
   height: 250%;
+  margin: 1rem 0 0 1rem;
   background-color: rgba(0, 229, 255, 0.236);
   border-radius: 3rem;
   z-index: -1; /* Fica atrás dos textos e da foto */
@@ -49,6 +50,7 @@
   /* background-color: lightgray; */
   padding: 10px;
   text-align: center;
+  margin-top: 3.5rem;
 }
 
 .texto1 h1 {
@@ -120,10 +122,10 @@
 
 @media screen and (max-width: 768px) {
   .container {
-    margin-left: 1rem;
+    margin: 0 0 0 1rem;
     width: 70vw;
     height: 80%;
-    top: 10rem;
+    top: 7rem;
   }
 
   .foto-perfil {
@@ -133,9 +135,9 @@
 
   .background {
     height: 90%;
-    width: 90%;
+    width: 102%;
     top: 1.5rem;
-    left: 2.3rem;
+    left: -0.9rem;
     padding: 1rem;
   }
 
@@ -143,7 +145,8 @@
 .texto1 {
     position: absolute;
     right: 0.3%;/*0.4*/
-    top: 2rem;
+    left:-2.5rem;
+    top: -2rem;
   }
 
   .texto1 hr{
@@ -164,11 +167,15 @@
   .texto2 {
     margin-top: 0;
     font-size: 0.8rem;
+    padding-left: 0rem;
   }
+
 
   .icone {
     padding-left: 0rem;
+    padding-right: 4rem;
     width: 100%;
+    
   }
 
   .icone .iconeRedondo {
