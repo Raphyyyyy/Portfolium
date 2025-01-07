@@ -56,11 +56,17 @@
   width: 820vw;
 }
 .seta-direita {
-  left: 85%;
+  left: 78%;
 }
 
+.seta-esquerda {
+  left: 0%;
+}
+
+
+
 .seta-esquerda, .seta-direita {
-  top: 30%;
+  top: 20%;
 }
 
 
