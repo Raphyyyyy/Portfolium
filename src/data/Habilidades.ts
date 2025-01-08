@@ -1,7 +1,7 @@
 const habilidades = [
 {
-  nome: "HTML",
-  icone: "fa-solid fa-code",
+  nome: "FrameMotion",
+  icone: "fa-brands fa-medium",
 },
 {
   nome: "CSS",
@@ -30,10 +30,6 @@ const habilidades = [
 {
   nome: "Vite",
   icone: "fas fa-rocket",
-},
-{
-  nome: "Node.js",
-  icone: "fab fa-node-js",
 },
 {
   nome: "Photoshop",
