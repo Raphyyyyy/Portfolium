@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   width: 25rem;
-  height: 25rem;
+  height: 22rem;
   padding: 0rem 0rem 2rem 0rem;
   overflow: hidden;
   border-radius: 5rem;
@@ -13,6 +13,11 @@
   background-color: #ffffff;
   font-family: "Archivo Black", sans-serif;
   cursor: pointer;
+}
+
+a {
+  text-decoration: none !important;
+  color: inherit;
 }
 
 .conteiner-card:hover {

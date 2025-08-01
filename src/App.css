@@ -1,10 +1,18 @@
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
 *{
   border:0;
   padding: 0;
 }
 
-@import 'bootstrap-icons/font/bootstrap-icons.css';
+a{
+  text-decoration: none;
+}
 
+:root {
+ --cinza-escuro: #525252;
+ --cinza-claro: #c5c5c5;
+}
 
 .fundo{
   position: absolute;
@@ -32,5 +40,49 @@ html {
 .fade-wrapper.hidden {
   opacity: 0;
 }
+
+/* container base */
+.containerPai{
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+
+
+/* div base */
+.divPai {
+  position: relative;
+  z-index: 0;
+  overflow: hidden; 
+  scroll-snap-align: start; 
+  /* cria um ponto de snap pra ele parar aqui */
+}
+
+/* Degradê */
+.divPai::before,
+.divPai::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 1;
+  pointer-events: none; 
+}
+
+
+.divPai::before {
+  top: 0;
+  background: linear-gradient(to bottom, white, transparent);
+}
+
+.divPai::after {
+  bottom: 0;
+  background: linear-gradient(to top, white, transparent);
+}
+
+/* fim degrade */
 
 

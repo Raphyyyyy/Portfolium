@@ -28,7 +28,7 @@ a{
   grid-template-columns: repeat(3, 1fr); 
   gap: 1rem; 
   position: absolute;
-  left: 23vw;
+  left: 15vw;
 }
 
 

@@ -7,14 +7,19 @@ import BackgroundText from "./BackgroundText";
 
 function Profile() {
   return (
+    <div
+      className="divPai"
+
+    >
     <div className="profile-pai" id="profile">
       <BackgroundText texto="SOBREMIM"/>
-      <div className="sobreMim">
+      {/* <div className="sobreMim">
         <h1>SOBRE MIM</h1>
-      </div>
+      </div> */}
       <div className="ProfileDiv">
         <ProfileBox />
       </div>
+    </div>
     </div>
   );
 }

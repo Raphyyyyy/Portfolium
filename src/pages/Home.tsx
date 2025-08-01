@@ -13,19 +13,25 @@ import Whatsapp from "../components/Whatsapp.tsx";
 function Home() {
 
   return (
-    <div className="home-pai">
-      <BurgerMenu />
-      <FadeWrapper>
-        <Header />
-        <HeaderPetalas />
-        <div className="fundo">
-          <FundoDandelion />
+<div className="containerPai">
+      <div className="home-pai">
+        <BurgerMenu />
+        <div className="divPai">
+          <FadeWrapper>
+            <Header />
+            <HeaderPetalas />
+            <div className="fundo">
+              <FundoDandelion />
+            </div>
+          </FadeWrapper>
         </div>
-      </FadeWrapper>
+
         <Whatsapp />
-        <Profile />
-        <Skill />
-      <Projetos />
+            
+        <div className="divPai"><Profile /></div>
+        <div className="divPai"><Skill /></div>
+        <div className="divPai"><Projetos /></div>
+      </div>
     </div>
   );
 }

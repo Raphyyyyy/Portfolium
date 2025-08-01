@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "../styles/ProfileBox.css";
+import foto from "../assets/foto2.png";
 import github from "../assets/icones/github-logo.png";
 import linkedin from "../assets/icones/linkedin_logo_icon_147268.png";
-// import curriculum from "../assets/icones/curriculum1.png";
-import curriculum from "../assets/icones/CVlogo.png";
+import curriculum from "../assets/icones/curriculum1.png";
 import { motion } from "framer-motion";
-
+import ImageWrapper from "./ImageWrapper";
 
 function ProfileBox() {
   const [fade, setFade] = useState(false);
@@ -29,13 +29,11 @@ function ProfileBox() {
 
   return (
     <div className="container">
-
-      
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{
+          scale: [0.5, 1.3, 1],
           opacity: [0, 1],
-          rotate: [0, 30],
         }}
         transition={{
           duration: 1.5,
@@ -44,22 +42,37 @@ function ProfileBox() {
         }}
         className="background"
       ></motion.div>
+      {/* Fundo azul */}
+
+        
+      <ImageWrapper style={{ borderRadius: '50%', width: isMobile ? '70%' : 'auto' }}>
+        {/* Imagem do perfil */}
+        <img
+          src={foto}
+          alt="foto de desenvolvedor front end"
+          className="foto-perfil"
+        />
+      </ImageWrapper>
+
       <motion.div
-        className="backMargem"
+        className="texto1"
         initial={{ opacity: 0 }}
         whileInView={{
           opacity: [0, 1],
-          rotate: [0, -30],
         }}
         transition={{
-          duration: 1.5,
+          duration: 2,
           ease: "easeInOut",
-          delay: 0.5,
+          delay: 0.7, // Atraso antes de começar
         }}
-      ></motion.div>
-      {/* Fundo azul */}
-
-
+      >
+        <h1>
+          <br />
+          Rafael Nunes
+        </h1>
+        <hr />
+        <h2>Desenvolvedor Front-end</h2>
+      </motion.div>
 
       <motion.div
         className="texto2"
@@ -74,11 +87,10 @@ function ProfileBox() {
         }}
       >
         Criativo e entusiasta de soluções inovadoras , desenvolvi de forma autodidata competências em programação e design, acredito que um bom design é aquele que deixa claro seu objetivo assim como uma programação, organizada e fácil de ler.
+        <br />
+        <br />
+        Sou comprometido com o aprendizado contínuo e a busca por novos desafios.
       </motion.div>
-
-
-
-
       <div className="icone">
         <a
           href="https://github.com/Raphyyyyy"
@@ -146,8 +158,7 @@ function ProfileBox() {
             }}
             src={curriculum}
             alt="curriculum"
-            // className="iconeComprido"
-            className="iconeRedondo"
+            className="iconeComprido"
           />
         </a>
       </div>

@@ -1,26 +1,77 @@
-.SkillCard{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 10vw;
-    height: 20vh;
-    padding: 1rem 5rem;
-    margin:auto;
-    border-radius: 1rem;
-    border: 1px solid #f1f1f1;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    font-size: 150%;
-    color: rgb(28, 72, 142);
-    background-color: #f1f1f192;
-    /* transition: all 0.3s ease; */
+
+.SkillCardList {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+
+  width: 95%;
+  height: 95%;
+  min-height: 18vh; 
+  margin: 1rem auto;
+  
+  background-color: rgb(255, 254, 254); /* Cor semitransparente */
+  backdrop-filter: blur(10px); /* Aplica o desfoque */
+  -webkit-backdrop-filter: blur(10px); /* Suporte para Safari */
+  border-radius: 10px; /* Opcional: cantos arredondados */
+
 }
 
-.SkillCard i{
-  font-size: 300%;
-  color: rgb(28, 72, 142);
-  align-self: center;
+.SkillCardList h2{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  width: 100%;
+
+  font-size: 2rem;
+  font-weight: 700;
+
+  margin-top: 1rem;
+  color: var(--cinza-escuro);
+
 }
+
+.SkillGrid {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.skillTitulo {
+  height: 15%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+}
+
+.skillTexto {
+  height: 75%;
+  font-size: 1rem;
+  padding-top: 1rem;
+  overflow-y: auto;
+  
+    text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start
+}
+
+.skillTexto li {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--cinza-escuro);
+  padding-left: 2rem;
+}
+
+
+
+
 
 @media screen and (max-width: 768px){
     .SkillCard{
@@ -40,23 +91,6 @@
     text-align: center;
     }
 
-/* //------------------------------ */
-      /* .SkillCard {
-    width: 80%; 
-    height: auto; 
-    margin: 1rem auto; 
-    padding: 1rem; 
-    box-sizing: border-box;
-  }
-
-  .SkillCard i {
-    font-size: 150%;
-    text-align: center;
-  }
-
-  .SkillCard h2 {
-    font-size: 1.5rem; 
-    text-align: center;
-  }
-   */
 }
+
+

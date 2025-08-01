@@ -1,77 +1,58 @@
-import { motion } from 'framer-motion';
-import { useRef, useEffect, useState } from 'react';
-import imagem1 from '../assets/Projetos/PortNovoThumb.gif';
-import '../styles/Slider.css';
-import mobile from "./IsMobile";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { CircleArrowLeft, CircleArrowRight } from "lucide-react";
 
-const Slider = ({ imagens }) => {
-  const [tamanho, setTamanho] = useState(0);
-  const carrosel = useRef(null);
+import "../styles/Slider.css";
 
-  const recalculateSize = () => {
-    if (carrosel.current) {
-      setTamanho(carrosel.current.scrollWidth - carrosel.current.offsetWidth);
-    }
+import SkillCard from "./SkillCard";
+import Habilidades from "../data/Habilidades";
+
+
+const slides = Habilidades;
+
+export default function Carousel() {
+  const [indiceAtual, setIndiceAtual] = useState(0);
+
+  const anterior = () => {
+    setIndiceAtual((prev) => (prev - 1 + slides.length) % slides.length);
+  };//slides leght é pro indice não ficar negativo
+
+  const proximo = () => {
+    setIndiceAtual((prev) => (prev + 1) % slides.length);
   };
 
-  // useEffect(() => {
-  //   recalculateSize();
-  //   window.addEventListener('resize', recalculateSize);
+  const getPosicaoSlide = (index: number) => {
+    if (index === indiceAtual) return "centro";
+    if (index === (indiceAtual - 1 + slides.length) % slides.length) return "esquerda";
+    if (index === (indiceAtual + 1) % slides.length) return "direita";
+    return "oculto";
+  };
 
-  //   return () => window.removeEventListener('resize', recalculateSize);
-  // }, [imagens]);
-
-  // const handleLeftClick = () => {
-  //   if (carrosel.current) {
-  //     carrosel.current.scrollBy({ left: -300, behavior: 'smooth' });
-  //   }
-  // };
-
-  // const handleRightClick = () => {
-  //   if (carrosel.current) {
-  //     carrosel.current.scrollBy({ left: 300, behavior: 'smooth' });
-  //   }
-  // };
-
-  const baseURL = "https://raphyyyyy.github.io/Portfolium";
-  const arrumaURL = (path) => `${baseURL}/${path}`;
-
-  // Calcula 260vw em pixels
-  const isMobile = mobile();
-  const valorEsq = isMobile?-300 :-260;
-  const esquerdaPixel = valorEsq * window.innerWidth / 100;
-
-  // useEffect(() => {
-  //   if (!sessionStorage.getItem('hasRefreshed')) {
-  //     sessionStorage.setItem('hasRefreshed', 'true');
-  //     window.location.reload();
-  //   }
-  // }, []);
 
   return (
-    <div className='sliderPai'> 
-    {console.log(esquerdaPixel)}
+    <div className="carousel-container">
+      <div className="carousel-wrapper">
+        {slides.map((slide, index) => {
+          const posicao = getPosicaoSlide(index);
 
-      {/* <button className="seta-esquerda" onClick={handleLeftClick}><i className="bi bi-arrow-left-circle"></i></button>
-      <button className="seta-direita" onClick={handleRightClick}><i className="bi bi-arrow-right-circle"></i></button> */}
-      <div className='seta-esquerda'><i className="bi bi-arrow-left-circle"></i></div>
-      <div className='seta-direita'><i className="bi bi-arrow-right-circle"></i></div>
-      <motion.div ref={carrosel} className='carrosel-pai'> 
-        <motion.div 
-          className='carrosel-filho'
-          drag='x'
-          dragConstraints={{ right: 0, left: esquerdaPixel }}
-          > 
-          <motion.div className='carrosel-imagem'> 
-            {imagens.map((imagem, index) => (
-              <img key={index} src={arrumaURL(imagem)} alt={`imagem${index + 1}`} />
-            ))}
+          return (
+            <div
+              key={slide.id}
+              className={`slide ${posicao}`}
+              // style={{ backgroundColor: posicao === "centro" ? "red" : posicao === "esquerda" ? "blue" : posicao === "direita" ? "green" : "gray" }}
+            >
+            <SkillCard title={slide.title} items={slide.items} />
 
-          </motion.div> 
-        </motion.div> 
-      </motion.div> 
+            </div>
+          );
+        })}
+
+      </div>
+
+      <div className="carousel-botoes">
+        <button onClick={anterior}><CircleArrowLeft className="iconeCarrossel"/></button>
+        <button onClick={proximo}><CircleArrowRight className="iconeCarrossel"/></button>
+      </div>
     </div>
   );
 }
-
-export default Slider;
