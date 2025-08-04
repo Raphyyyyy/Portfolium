@@ -9,7 +9,7 @@ function FundoDandelion() {
     <>
     <div className="header-pai">
       <HeaderDandelions />      
-      <HeaderPetalas />
+      {/* <HeaderPetalas /> */}
     </div>
     {/* <HeaderPetalas /> */}
 

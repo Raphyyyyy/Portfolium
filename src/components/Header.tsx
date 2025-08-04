@@ -29,7 +29,7 @@ function Header() {
       <h2 className={`header-subtitle ${fade ? "fade-in" : ""}`}>
         Portfólio front end 
         {isMobile ? 
-        <><br />&nbsp;&nbsp;&nbsp;&nbsp; </> 
+        <><br />{/*&nbsp;&nbsp;&nbsp; */} </> 
         : " de"} Rafael Nunes
       </h2>
     </div>

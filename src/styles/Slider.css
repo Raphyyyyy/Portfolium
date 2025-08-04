@@ -4,8 +4,9 @@
   margin: 0 auto;
   padding: 2rem 1rem;
   text-align: center;
-
 }
+
+
 
 .carousel-wrapper {
   position: relative;
@@ -35,6 +36,7 @@
 /* 
   background-color: aqua; */
 }
+
 
 .slide img {
   width: 100%;
@@ -103,4 +105,33 @@
 .iconeCarrossel:hover {
   color: var(--cinza-escuro);
   transition: color 0.3s ease;
+}
+
+
+@media screen and (max-width: 768px) {
+  .carousel-container {
+    width: 100%;
+    padding: 1rem;
+  }
+  .carousel-wrapper {
+    height: 30vh;
+    width: 100%;
+  }
+
+  .slide {
+    width: 70%;
+    height: 250%;
+    margin: 0;
+  }
+  
+  .iconeCarrossel {
+    width: 10vw;
+    height: 10vw;
+  }
+
+  .carousel-botoes {
+    gap: 185%;
+    top: 45%;
+    left: 33%;
+  }
 }

@@ -30,7 +30,7 @@ function Home() {
             
         <div className="divPai"><Profile /></div>
         <div className="divPai"><Skill /></div>
-        <div className="divPai"><Projetos /></div>
+        <div className="divPai"><Projetos /></div> 
       </div>
     </div>
   );

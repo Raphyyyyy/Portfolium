@@ -35,15 +35,20 @@ a{
 
 @media screen and (max-width: 768px) {
   .projetos-pai {
-    top:48rem; 
     height: auto;
+    width: 100%;
   }
 
   .projetos-pai ul {
-    grid-template-columns: repeat(2, 0.35fr);
-    gap: 0.2rem; 
-    left: 3.32rem; 
-    top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* ocupa 100% */
+    gap: 1.2rem;
+    padding: 0 1.5rem; /* margem lateral */
+    margin-top: 2rem;
+    position: relative; /* importante */
+    width: 100%;
+    left: unset;
+    top: unset;
   }
 
   .projetos-pai h1 {
@@ -62,6 +67,7 @@ a{
     margin:0;
     left: 0;
     right: 0;
+
   }
 
   .image-container{

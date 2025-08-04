@@ -2,18 +2,16 @@
 .SkillCardList {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
 
   width: 95%;
   height: 95%;
   min-height: 18vh; 
   margin: 1rem auto;
   
-  background-color: rgb(255, 254, 254); /* Cor semitransparente */
-  backdrop-filter: blur(10px); /* Aplica o desfoque */
+  background-color: rgba(255, 254, 254, 0); 
+  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px); /* Suporte para Safari */
-  border-radius: 10px; /* Opcional: cantos arredondados */
+  border-radius: 10px; 
 
 }
 
@@ -74,6 +72,13 @@
 
 
 @media screen and (max-width: 768px){
+
+.SkillCardList{
+    
+}
+
+
+
     .SkillCard{
     width: 9vw;
     height: 9vw;

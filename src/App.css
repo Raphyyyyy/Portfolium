@@ -1,9 +1,17 @@
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 
+
 *{
   border:0;
   padding: 0;
 }
+
+html, body {
+  height: auto;
+  overflow: auto;
+}
+
+
 
 a{
   text-decoration: none;
@@ -42,13 +50,13 @@ html {
 }
 
 /* container base */
-.containerPai{
-  height: 100vh;
-  overflow-y: scroll;
+.containerPai {
+  min-height: 100vh;
+  height: 100dvh; 
+  overflow-y: auto;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
-
 
 
 /* div base */
@@ -86,3 +94,29 @@ html {
 /* fim degrade */
 
 
+
+@media (max-width: 768px) {
+  .containerPai {
+    scroll-snap-type: y mandatory;
+  }
+
+  .divPai::before,
+  .divPai::after {
+    height: 20%; 
+  }
+
+  .divPai {
+    /* scroll-snap-align: unset; */
+    height: 100dvh;
+    max-height: 100%;
+    max-width: 100%;
+
+    overflow: hidden;
+  }
+
+  /* .scroll-container {
+    scroll-snap-type: none;
+  } */
+
+
+}

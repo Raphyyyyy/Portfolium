@@ -87,8 +87,8 @@ a {
 
 @media screen and (max-width: 768px) {
   .conteiner-card {
-    width: 10rem;
-    height: 11rem;
+    width: 13rem;
+    height: 10rem;
     padding-bottom: 0.1rem;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.48);
     margin-left: 1rem;
@@ -120,4 +120,5 @@ a {
     width: 10rem;
     margin-bottom: -5rem;
   }
+  
 }
