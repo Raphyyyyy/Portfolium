@@ -114,29 +114,28 @@
   }
 
   .backMargem {
-    position: absolute;
-    top: 1rem;
-    left: 0rem;
-    width: 90%;
-    height: 90%;
-    margin: 1rem 0 0 1rem;
-
-    border: rgba(194, 211, 44, 0.236) 0.2rem solid;
-    rotate: 75deg;
-  }
+        position: absolute;
+        top: 1.8rem;
+        left: -2rem;
+        width: 119%;
+        height: 80%;
+        margin: 1rem 0 0 1rem;
+        border: rgba(194, 211, 44, 0.236) 0.2rem solid;
+        rotate: 36deg;
+    }
 
   .foto-perfil {
     width: 7rem;
     height: auto;
   }
 
-  .background {
-    height: 90%;
-    width: 102%;
-    top: 1.5rem;
-    left: -0.9rem;
-    padding: 1rem;
-  }
+    .background {
+        height: 75%;
+        width: 110%;
+        top: 2.5rem;
+        left: -1.6rem;
+        padding: 1rem;
+    }
 
 
   .texto1 {
@@ -165,6 +164,7 @@
   .texto2 {
     position: relative;
     top: 4rem;
+
     margin-top: 0;
     font-size: 0.8rem;
     padding-left: 0rem;

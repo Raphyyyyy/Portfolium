@@ -5,13 +5,14 @@ import ImageWrapper from "./ImageWrapper";
 import "../styles/Projetos.css";
 import BackgroundText from "./BackgroundText";
 import { useProjects } from "../context/ProjectContext";
+import useIsMobile from "./IsMobile";
 
 function Projetos() {
   const projectData = useProjects();
+  const isMobile = useIsMobile();
 
-  // Debug para ver os dados e estrutura exata
   React.useEffect(() => {
-    console.log("projectData completo:", projectData);
+    // console.log("projectData completo:", projectData);
     projectData.forEach((projeto, index) => {
       console.log(`Projeto ${index} metadata:`, projeto.metadata);
     });
@@ -23,10 +24,27 @@ function Projetos() {
       <div>
         <ul>
           {projectData.map((projeto, index) => {
-            // Segurança para evitar erros caso metadata seja undefined
             const metadata = projeto.metadata || {};
-            const tags = metadata.techs ? metadata.techs.split(",").map((t: string) => t.trim()) : [];
+            const tags = metadata.techs
+              ? metadata.techs.split(",").map((t: string) => t.trim())
+              : [];
 
+            // Mobile: só o card
+            if (isMobile) {
+              return (
+                <li key={projeto.slug}>
+                  <ProjectCard
+                    projectName={projeto.title || "Sem título"}
+                    tags={tags}
+                    image={metadata.iconimage || ""}
+                    linksite={metadata.linksite || ""}
+                    slug={projeto.slug}
+                  />
+                </li>
+              );
+            }
+
+            // Desktop: com ImageWrapper
             return (
               <ImageWrapper
                 key={projeto.slug}

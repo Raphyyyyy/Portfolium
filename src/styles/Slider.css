@@ -119,8 +119,9 @@
   }
 
   .slide {
+    background-color: white;
     width: 70%;
-    height: 250%;
+    height: 200%;
     margin: 0;
   }
   
@@ -130,8 +131,8 @@
   }
 
   .carousel-botoes {
-    gap: 185%;
+    gap: 165%;
     top: 45%;
-    left: 33%;
+    left: 30%;
   }
 }

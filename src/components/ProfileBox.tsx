@@ -2,40 +2,30 @@ import React, { useEffect, useState } from "react";
 import "../styles/ProfileBox.css";
 import github from "../assets/icones/github-logo.png";
 import linkedin from "../assets/icones/linkedin_logo_icon_147268.png";
-// import curriculum from "../assets/icones/curriculum1.png";
 import curriculum from "../assets/icones/CVlogo.png";
 import { motion } from "framer-motion";
-
+import useIsMobile from "./IsMobile";
 
 function ProfileBox() {
   const [fade, setFade] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const isMobile = useIsMobile(); 
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    window.addEventListener("resize", handleResize);
-
     const timer = setTimeout(() => {
       setFade(true);
     }, 100);
 
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <div className="container">
 
-      
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{
-          opacity: [0, 1],
-          rotate: [0, 30],
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{
+            opacity: [0, 1],
+            rotate: [0, 30],
         }}
         transition={{
           duration: 1.5,
@@ -44,23 +34,24 @@ function ProfileBox() {
         }}
         className="background"
       ></motion.div>
+
       <motion.div
         className="backMargem"
         initial={{ opacity: 0 }}
         whileInView={{
           opacity: [0, 1],
-          rotate: [0, -30],
+          rotate: !isMobile ? 58 : 188,
         }}
         transition={{
           duration: 1.5,
           ease: "easeInOut",
           delay: 0.5,
         }}
+
       ></motion.div>
-      {/* Fundo azul */}
 
-
-
+    
+      
       <motion.div
         className="texto2"
         initial={{ opacity: 0 }}
@@ -70,14 +61,14 @@ function ProfileBox() {
         transition={{
           duration: 2,
           ease: "easeInOut",
-          delay: 0.7, // Atraso antes de começar
+          delay: 0.7,
         }}
       >
-        Criativo e entusiasta de soluções inovadoras , desenvolvi de forma autodidata competências em programação e design, acredito que um bom design é aquele que deixa claro seu objetivo assim como uma programação, organizada e fácil de ler.
+        Criativo e entusiasta de soluções inovadoras, desenvolvi de forma
+        autodidata competências em programação e design, acredito que um bom
+        design é aquele que deixa claro seu objetivo assim como uma programação,
+        organizada e fácil de ler.
       </motion.div>
-
-
-
 
       <div className="icone">
         <a
@@ -146,7 +137,6 @@ function ProfileBox() {
             }}
             src={curriculum}
             alt="curriculum"
-            // className="iconeComprido"
             className="iconeRedondo"
           />
         </a>
