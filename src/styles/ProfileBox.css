@@ -115,13 +115,13 @@
 
   .backMargem {
         position: absolute;
-        top: 1.8rem;
-        left: -2rem;
+        top: 2rem;
+        left: -2.2rem;
         width: 119%;
         height: 80%;
         margin: 1rem 0 0 1rem;
-        border: rgba(194, 211, 44, 0.236) 0.2rem solid;
-        rotate: 36deg;
+        border: rgba(194, 211, 44, 0.089) 0.2rem solid;
+        rotate: 82deg;
     }
 
   .foto-perfil {
@@ -130,7 +130,7 @@
   }
 
     .background {
-        height: 75%;
+        height: 80%;
         width: 110%;
         top: 2.5rem;
         left: -1.6rem;

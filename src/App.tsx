@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Projeto from './pages/Projeto';
 import NotFound from './pages/NotFound';
 
+
 import { ProjectProvider } from "./context/ProjectContext";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";

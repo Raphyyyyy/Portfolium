@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "../App.css";
 import Header from "../components/Header.tsx";
 import Projetos from "../components/Projetos.tsx";
@@ -11,28 +11,32 @@ import FadeWrapper from "../components/FadeWrapper.tsx";
 import Whatsapp from "../components/Whatsapp.tsx";
 
 function Home() {
-
   return (
-<div className="containerPai">
-      <div className="home-pai">
-        <BurgerMenu />
-        <div className="divPai">
-          <FadeWrapper>
-            <Header />
-            <HeaderPetalas />
-            <div className="fundo">
-              <FundoDandelion />
-            </div>
-          </FadeWrapper>
-        </div>
+    <>
+      {/* Canvas fixo e independente do scroll */}
+      {/* <Ondas key="ripple-canvas" /> */}
 
-        <Whatsapp />
-            
-        <div className="divPai"><Profile /></div>
-        <div className="divPai"><Skill /></div>
-        <div className="divPai"><Projetos /></div> 
+      <div className="containerPai" style={{ position: "relative", zIndex: 1 }}>
+        <div className="home-pai">
+          <BurgerMenu />
+
+          <div className="divPai">
+            <FadeWrapper>
+              <Header />
+              <HeaderPetalas />
+              <div className="fundo">
+                <FundoDandelion />
+              </div>
+            </FadeWrapper>
+          </div>
+
+          <Whatsapp />
+          <div className="divPai"><Profile /></div>
+          <div className="divPai"><Skill /></div>
+          <div className="divPai"><Projetos /></div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

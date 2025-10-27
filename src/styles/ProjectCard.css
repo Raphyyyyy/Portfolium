@@ -87,11 +87,12 @@ a {
 
 @media screen and (max-width: 768px) {
   .conteiner-card {
-    width: 13rem;
+    width: 90vw;
     height: 10rem;
     padding-bottom: 0.1rem;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.48);
-    margin-left: 1rem;
+    margin-left: 0rem;
+    border-radius: 0.4rem;
   }
 
   .conteiner-card img {
