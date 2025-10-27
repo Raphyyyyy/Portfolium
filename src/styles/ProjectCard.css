@@ -92,7 +92,7 @@ a {
     padding-bottom: 0.1rem;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.48);
     margin-left: 0rem;
-    border-radius: 0.4rem;
+    border-radius: 0.3rem;
   }
 
   .conteiner-card img {
@@ -102,12 +102,12 @@ a {
   }
 
   .div-tags h2 {
-    font-size: 1rem;
+    font-size: 1.2rem;
     padding: 0.5rem 0;
   }
 
   .div-tags span {
-    font-size: 0.3rem;
+    font-size: 0.5rem;
     padding: 0.1rem 0.5rem;
     margin-right: 0.2rem;
   }
