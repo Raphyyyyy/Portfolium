@@ -1,96 +1,134 @@
+/* ===================== SKILL SECTION ===================== */
 .SkillDiv {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
 }
 
-ul {
+/* Container principal */
+.skillCategorias {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
+  align-items: flex-start;
+  gap: 4rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 4rem auto;
+}
+
+/* ============ HARD SKILLS ============ */
+.hardSkills {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  list-style: none;
-  padding: 2rem;
-  width: 65%;
-  height: 65%;
-  margin: auto;
-  margin-top: 2rem;
+  justify-content: center;
 }
 
-li {
-  margin: 1rem;
+.hardSkills h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #000;
+  text-align: center;
 }
 
-.SkillDiv h1 {
-  position: absolute;
-  writing-mode: vertical-rl;
-  transform: translateX(170%) translateY(7%) rotate(180deg);
-  left: 0;
-  top: 0;
-  margin: 0;
-  font-size: 5vw;
-  font-family: "Archivo Black", sans-serif;
-  color: rgb(28, 72, 142);
+/* Grid centralizado e compacto */
+.skillGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 110px); /* 4 colunas fixas */
+  justify-content: center;
+  column-gap: 36px;
+  row-gap: 28px;
 }
 
-.UlDiv {
-  position: absolute;
-  top: 7rem;
-
+/* Item individual */
+.skillItem {
+  width: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.25s ease;
 }
 
-.background_projetos {
-  top: 0; 
-  left: 0;
+.skillItem:hover {
+  transform: scale(1.08);
 }
 
-@media screen and (max-width: 768px) {
- .SkillDiv {
-    height: 100%;
+/* Ícone ajustado ao tamanho real */
+.skillItem .icone {
+  all: unset; /* zera heranças estranhas */
+  display: inline-block;
+  font-size: 2.2rem;
+  line-height: 1;
+  color: #000;
+  margin-bottom: 0.4rem;
+  background: transparent !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+/* Texto abaixo do ícone */
+.skillItem p {
+  font-size: 0.92rem;
+  color: #000;
+  line-height: 1.2;
+}
+
+/* ============ SOFT SKILLS ============ */
+.softSkills {
+  flex: 1;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.softSkills h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #000;
+  text-align: center;
+}
+
+.softText {
+  color: #000;
+  font-size: 1.04rem;
+  line-height: 1.75;
+  text-align: justify;
+  background: rgba(0, 0, 0, 0.03);
+  padding: 1.2rem 1.4rem;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+}
+
+/* ============ MOBILE ============ */
+@media (max-width: 900px) {
+  .skillCategorias {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
   }
 
-
-  ul {
-    width: 80%;
-    
+  .skillGrid {
+    grid-template-columns: repeat(3, 90px);
+    column-gap: 24px;
+    row-gap: 20px;
   }
 
-  .SkillDiv h1  {
-
-    writing-mode: vertical-rl; 
-    transform: rotate(180deg); 
-    line-height: 2rem; 
-    font-size: 5rem;
-    right: 0; 
-    top: 0; 
-    transform: translateX(3%) translateY(5%) rotate(180deg); 
-    z-index: -1;
+  .skillItem {
+    width: 90px;
   }
 
-  .UlDiv {
-    top: 0;
-    left: 2rem;
-    
+  .skillItem .icone {
+    font-size: 1.9rem;
   }
 
-  .UlDiv ul {
-      padding: 0;
-      margin:0;
-      border: 0;
-      width: 100%;
-      height: 100%;
-
-  }
-
-
-  .background_projetos {
-    top: 0; 
-    left: 0;
-    height: 100vh;
+  .softSkills {
+    max-width: 100%;
   }
 }

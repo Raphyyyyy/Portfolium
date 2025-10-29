@@ -7,6 +7,7 @@ a{
   position: relative;
   width: 100vw;
   height: 100vh; 
+  margin-top: 3rem;
 
 }
 
@@ -29,6 +30,7 @@ a{
   gap: 1rem; 
   position: absolute;
   left: 15vw;
+  list-style: none;
 }
 
 
