@@ -38,6 +38,7 @@ a{
 @media screen and (max-width: 768px) {
   .projetos-pai {
     height: auto;
+    margin-top: 5rem;
     width: 100%;
   }
 

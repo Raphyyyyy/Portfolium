@@ -7,15 +7,17 @@ type CardsProps = {
   tags: string[];
   slug: string;
   image: string;
-  linkSite: string;
+  linkSite: string; // Este será passado para a página Projeto
 };
 
-function ProjectCard({ projectName, tags, slug, image, linksite }: CardsProps) {
+function ProjectCard({ projectName, tags, slug, image, linkSite }: CardsProps) {
 
-  {console.log("🔗 linkSite recebido:", linksite , "slug", slug);}
+  console.log("linkSite recebido:", linkSite , "slug", slug);
+
   return (
-    <a href={linksite} target="_blank" rel="noopener noreferrer">
-      
+
+   <Link to={`/projeto/${slug}`} state={{ linkSite, slug }}>
+    
       <div className="conteiner-card" name="conteiner-card">
         <img src={image} name="thumb-projeto" alt={projectName} />
         <div name="div-tags" className="div-tags">
@@ -27,7 +29,7 @@ function ProjectCard({ projectName, tags, slug, image, linksite }: CardsProps) {
           </p>
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
 

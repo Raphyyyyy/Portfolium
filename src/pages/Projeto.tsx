@@ -1,101 +1,200 @@
-import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import Tradutor from "../Hooks/Tradutor";
+import { useEffect, useState } from "react"; // 🟦 ADIÇÃO
+import { useParams } from "react-router-dom";
 import { useProjects } from "../context/ProjectContext";
-import degrade from "../assets/Projetos/Degrade.png";
+import { motion } from "framer-motion";
+import BotaoVoltar from "../Hooks/BotaoVoltar";
 import "../styles/Projeto.css";
-import "../App.css";
-import Slider from "../components/Slider"; 
+import dandelionIcon from "../../public/assets/illustration-plant/8608.jpg";
+import BackgroundText from "../components/BackgroundText";
+import macBook from "../../public/assets/pc.png";
 
 function Projeto() {
-  const { slug } = useParams(); // Pega o parâmetro slug da URL
-  const projectData = useProjects(); // Pega os dados do contexto
+  const { slug } = useParams();
+  const projetos = useProjects();
 
-  // acessa a estrutura correta dos dados
-  const projeto = projectData.find((projeto) => projeto.slug === slug); // Pega o projeto certo
-  //console.table(projectData);
+  const projeto = projetos.find((p) => p.slug === slug);
 
-  const navigate = useNavigate();
-  const voltar = () => {
-    navigate(-1); // Volta para a página anterior
-  };
+  if (!projeto) return <p>Projeto não encontrado</p>;
 
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []); // Faz a página começar no topo
+  const { title, metadata } = projeto;
+  const tags = metadata.fulltechs?.split(",").map((tag) => tag.trim()) || [];
 
-  if (!projeto) {
-    return <div>Projeto não encontrado</div>; // Mostra mensagem se o projeto não for encontrado
-  }
+  // Estado que controla se o menu ganhou fundo ao rolar
+  const [scrolled, setScrolled] = useState(false);
 
-  const image1 = projeto.metadata?.image1;
-  const image2 = projeto.metadata?.image2;
-  const image3 = projeto.metadata?.image3;
-  const image4 = projeto.metadata?.image4;
+  // Verifica o scroll e aplica a classe "scrolled" quando passa 30% do viewport
+  useEffect(() => {
+    function handleScroll() {
+      const scrollY = window.scrollY;
+      const triggerPoint = window.innerHeight * 0.3; // 30% do viewport
+      setScrolled(scrollY > triggerPoint);
+    }
 
-  const imagens = [image1, image2, image3, image4];
-
-  const baseURL = "https://raphyyyyy.github.io/Portfolium";
-  const arrumaURL = (path) => `${baseURL}/${path}`; 
-  //isso arruma a url pro gtihub pages
-
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <div className="ProjetoIndPai">
-      <i className="fa-solid fa-arrow-left" onClick={voltar}></i>
+    <>
+      {/* menu */}
 
-      <div className="HeaderImageWrapper">
-        <img src={degrade} className="Degrade" alt="Degrade" />
-        {projeto.metadata?.headerimage && (
-          <img
-            src={arrumaURL(projeto.metadata.headerimage)}
-            className="HeaderImage"
-            alt={projeto.title}
-          />
+      <div className={`botoes-links ${scrolled ? "scrolled" : ""}`}>
+        <BotaoVoltar />
+        <a href={metadata.linksite} target="_blank" rel="noopener noreferrer" className="linkProjeto">
+          IR PARA O SITE
+        </a>
+        {metadata.linkcode && (
+          <a href={metadata.linkcode} target="_blank" rel="noopener noreferrer" className="linkProjeto">
+            VER O CÓDIGO
+          </a>
         )}
       </div>
 
-      <h1>{projeto.title}</h1>
-      <h2>{projeto.title}</h2>
-
-      <p className="ProjDescricao"
-      dangerouslySetInnerHTML={{ __html: projeto.metadata?.description || "" }}
-      />
-        
-
-
-      <div name="Proj-div-tags" className="Proj-div-tags">
-        <p>
-          {projeto.metadata?.techs ? projeto.metadata.techs.split(',').map((tag) => (
-            <span key={tag.trim()}>{tag.trim()}</span>
-          )) : <span>Nenhuma tecnologia listada</span>}
-        </p>
-      </div>
-
       <div
-        className="ProjDescricaoFull"
-        dangerouslySetInnerHTML={{ __html: projeto.metadata?.fulldescription || "" }}
-      />
+        className="projetoPai"
+        style={{
+          "--cor1": metadata.cor1 || "rgba(0, 195, 255, 0.4)",
+          "--cor2": metadata.cor2 || "rgba(109, 83, 255, 0.52)",
+          "--cor3": metadata.cor3 || "rgba(0, 17, 253, 0.52)",
+        }}
+      >
 
-      <div className="Projeto-Botao">
-        <a href={projeto.metadata?.linkSite} target="_blank" rel="noopener noreferrer">
-          <button>Ver site</button>
-        </a>
-        <a href={projeto.metadata?.linkCode} target="_blank" rel="noopener noreferrer">
-          <button>Ver código</button>
-        </a>
-      </div>
+        <BackgroundText texto={title.replace(/\s+/g, "").toUpperCase()} />
 
-      {/* <div className="grid-pai">
-        <div className="grid-container">
-          {image1 && <img src={arrumaURL(image1)} alt="Imagem 1 do projeto" />}
-          {image2 && <img src={arrumaURL(image2)} alt="Imagem 2 do projeto" />}
-          {image3 && <img src={arrumaURL(image3)} alt="Imagem 3 do projeto" />}
-          {image4 && <img src={arrumaURL(image4)} alt="Imagem 4 do projeto" />}
+        {/* ícone central */}
+        <motion.div
+          className="iconeProjeto"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <img src={dandelionIcon} alt="Ícone Dandelion" className="dandelionIcon" />
+        </motion.div>
+
+        <div className="projetoHead">
+          <div className="sobrepor" />
+          <img src={`${import.meta.env.BASE_URL}${metadata.iconimage}`} alt={title} className="imgProjetoHead" />
+
+          <h1 className="projetoTitulo">
+            {title.toUpperCase()}
+          </h1>
         </div>
-      </div> */}
 
-      <Slider imagens={imagens}/>
-    </div>
+        <div className="tags">
+          {tags.map((tag) => (
+            <motion.span
+              key={tag}
+              className="tag"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{
+                duration: 2.2,
+                ease: "easeOut",
+              }}
+            >
+              {tag}
+            </motion.span>
+          ))}
+        </div>
+
+        {/* BLOCO 1 */}
+        <motion.div
+          className="projetoGrupo"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        >
+          <div className="ProjTxt">
+            <div className="projTitulo">
+              <h2>{metadata.titulo1}</h2>
+            </div>
+            <p dangerouslySetInnerHTML={{ __html: metadata.texto1 }} />
+          </div>
+          <div className="ProjImg ProjImgComPC">
+            <img
+              src={`${import.meta.env.BASE_URL}${metadata.image1}`}
+              alt={title}
+              className="imagemGrupo imagemTela"
+            />
+            <img src={macBook} className="imagemPC" />
+          </div>
+        </motion.div>
+
+        {/* BLOCO 2 */}
+        <motion.div
+          className="projetoGrupo"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        >
+          <div className="ProjImg">
+            <img
+              src={`${import.meta.env.BASE_URL}${metadata.image2}`}
+              alt={title}
+              className="imagemGrupo"
+            />
+          </div>
+          <div className="ProjTxt">
+            <div className="projTitulo">
+              <h2>{metadata.titulo2}</h2>
+            </div>
+            <p dangerouslySetInnerHTML={{ __html: metadata.texto2 }} />
+          </div>
+        </motion.div>
+
+        {/* BLOCO 3 */}
+        <motion.div
+          className="projetoGrupo"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        >
+          <div className="ProjTxt">
+            <div className="projTitulo">
+              <h2>{metadata.titulo3}</h2>
+            </div>
+            <p dangerouslySetInnerHTML={{ __html: metadata.texto3 }} />
+          </div>
+          <div className="ProjImg">
+            <img
+              src={`${import.meta.env.BASE_URL}${metadata.image3}`}
+              alt={title}
+              className="imagemGrupo"
+            />
+          </div>
+        </motion.div>
+
+        {/* BLOCO 4 */}
+        <motion.div
+          className="projetoGrupo"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        >
+          <div className="ProjImg">
+            <img
+              src={`${import.meta.env.BASE_URL}${metadata.image4}`}
+              alt={title}
+              className="imagemGrupo"
+            />
+          </div>
+          <div className="ProjTxt">
+            <div className="projTitulo">
+              <h2>{metadata.titulo4}</h2>
+            </div>
+            <p dangerouslySetInnerHTML={{ __html: metadata.texto4 }} />
+          </div>
+        </motion.div>
+
+      </div>
+    </>
   );
 }
 
