@@ -51,8 +51,8 @@ const BurgerMenu = () => {
             </li>
             <li>
               <a
-                href="https://github.com/Raphyyyyy/Portfolium/raw/refs/heads/main/Rafael%20Alexandre%20Nunes.docx"
-                target="_blank"
+                href="https://github.com/Raphyyyyy/Portfolium/raw/main/CV_Rafael_Alexandre_Nunes_.docx" 
+                target="_blank" 
                 rel="noopener noreferrer"
               >
                 Curriculum
