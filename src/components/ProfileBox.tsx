@@ -118,11 +118,10 @@ function ProfileBox() {
           />
         </a>
 
-        <a
-          href="https://github.com/Raphyyyyy/Portfolium/raw/refs/heads/main/Rafael%20Alexandre%20Nunes.docx"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+          <a 
+          href="https://github.com/Raphyyyyy/Portfolium/raw/main/CV_Rafael_Alexandre_Nunes_.docx"
+          download="Rafael_Alexandre_Nunes_CV.docx"
+          >
           <motion.img
             initial={{ opacity: 0 }}
             whileInView={{

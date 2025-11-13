@@ -7,7 +7,7 @@ a{
   position: relative;
   width: 100vw;
   height: 100vh; 
-  margin-top: 3rem;
+  margin-top: 7rem;
 
 }
 
@@ -27,7 +27,7 @@ a{
 .projetos-pai ul{
   display: grid;
   grid-template-columns: repeat(3, 1fr); 
-  gap: 1rem; 
+  gap: 5rem; 
   position: absolute;
   left: 15vw;
   list-style: none;
