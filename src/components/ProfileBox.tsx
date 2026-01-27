@@ -8,7 +8,7 @@ import useIsMobile from "./IsMobile";
 
 function ProfileBox() {
   const [fade, setFade] = useState(false);
-  const isMobile = useIsMobile(); 
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -21,11 +21,11 @@ function ProfileBox() {
   return (
     <div className="container">
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{
-            opacity: [0, 1],
-            rotate: [0, 30],
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{
+          opacity: [0, 1],
+          rotate: [0, 30],
         }}
         transition={{
           duration: 1.5,
@@ -50,8 +50,8 @@ function ProfileBox() {
 
       ></motion.div>
 
-    
-      
+
+
       <motion.div
         className="texto2"
         initial={{ opacity: 0 }}
@@ -64,10 +64,10 @@ function ProfileBox() {
           delay: 0.7,
         }}
       >
-        Criativo e entusiasta de soluções inovadoras, desenvolvi de forma
-        autodidata competências em programação e design, acredito que um bom
-        design é aquele que deixa claro seu objetivo assim como uma programação,
-        organizada e fácil de ler.
+        Desenvolvedor Front-End com foco em interfaces modernas, organização de código 
+        e experiência do usuário. Unindo programação e design 
+        para criar soluções claras, funcionais e visualmente consistentes, 
+        sempre priorizando legibilidade, usabilidade e propósito.
       </motion.div>
 
       <div className="icone">
@@ -118,9 +118,11 @@ function ProfileBox() {
           />
         </a>
 
-          <a 
-          href="https://github.com/Raphyyyyy/Portfolium/raw/main/CV_Rafael_Alexandre_Nunes_.docx"
-          download="Rafael_Alexandre_Nunes_CV.docx"
+          <a
+            href="https://github.com/Raphyyyyy/Portfolium/raw/main/CV_Rafael_Alexandre_Nunes_.pdf"
+            download="Rafael_Alexandre_Nunes_CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
           >
           <motion.img
             initial={{ opacity: 0 }}

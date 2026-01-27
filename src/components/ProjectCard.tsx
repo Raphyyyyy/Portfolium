@@ -7,27 +7,25 @@ type CardsProps = {
   tags: string[];
   slug: string;
   image: string;
-  linkSite: string; // Este será passado para a página Projeto
+  linkSite?: string;
+  logo?: string;
 };
 
-function ProjectCard({ projectName, tags, slug, image, linkSite }: CardsProps) {
-
-  console.log("linkSite recebido:", linkSite , "slug", slug);
+function ProjectCard({ projectName, tags, slug, image, linkSite, logo }: CardsProps) {
+  console.log("linkSite recebido:", linkSite, "slug", slug);
 
   return (
-
-   <Link to={`/projeto/${slug}`} state={{ linkSite, slug }}>
-    
+    <Link to={`/projeto/${slug}`} state={{ linkSite, slug }}>
       <div className="conteiner-card" name="conteiner-card">
-        <img src={image} name="thumb-projeto" alt={projectName} />
-        <div name="div-tags" className="div-tags">
-          <h2>{projectName}</h2>
-          <p>
-            {tags.map((tag) => (
-              <span key={tag}>{tag}</span>
-            ))}
-          </p>
+        <div className="cardImagem">
+          {logo && (
+            <img src={logo} alt={`${projectName} logo`} className="projLogo" />
+          )}
+
+          <img src={image} name="thumb-projeto" alt={projectName} className="projImg"/>
         </div>
+
+        <h2 className="titulo-overlay">{projectName}</h2>
       </div>
     </Link>
   );

@@ -38,6 +38,7 @@ function Projetos() {
                     tags={tags}
                     image={metadata.iconimage || ""}
                     linksite={metadata.linksite || ""}
+                    logo={metadata.logo || ""}
                     slug={projeto.slug}
                   />
                 </li>
@@ -56,6 +57,7 @@ function Projetos() {
                     projectName={projeto.title || "Sem título"}
                     tags={tags}
                     image={metadata.iconimage || ""}
+                    logo={metadata.logo || ""}
                     linksite={metadata.linksite || ""}
                     slug={projeto.slug}
                   />

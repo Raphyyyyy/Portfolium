@@ -2,17 +2,21 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  width: 25rem;
-  height: 22rem;
-  padding: 0rem 0rem 2rem 0rem;
+
+  width: 41vw;
+  height: 25vh;
+
   overflow: hidden;
-  border-radius: 5rem;
-  /* border: 1px solid #f1f1f1; */
-  box-shadow: 0 0 70px rgba(0, 0, 0, 0.48);
-  background-color: #ffffff;
+  border-radius: 2rem;
+
   font-family: "Archivo Black", sans-serif;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  line-height: 1;
   cursor: pointer;
+
+  /* ✅ necessário pra o absolute do h2 funcionar */
+  position: relative;
 }
 
 a {
@@ -27,41 +31,51 @@ a {
   transition: all 1.3s ease;
 }
 
-.conteiner-card img {
-  min-width: 100%;
+.cardImagem {
+  width: 100%;
   height: 15rem;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.cardImagem .projImg {
+  min-width: 100%;
+  width: 100%;
+  height: 100%;
   max-height: 15rem;
+  border-radius: 1rem;
   object-fit: cover;
 }
 
-.div-tags {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: auto;
-  word-wrap: break-word;
-
+.cardImagem .projLogo {
+  position: absolute;
+  width: 7.8rem;
+  height: 7.8rem;
+  top: 1rem;
+  right: 80%;
+  border-radius: 0.5rem;
+  object-fit: cover;
 }
 
-.div-tags h2 {
-  text-align: center;
-  font-size: 2.5rem;
+/* ✅ TEXTO SOBRE A IMAGEM */
+.titulo-overlay {
+  position: absolute;
+  left: 1.3rem;
+  bottom: 1.2rem;
+
+  font-size: 1.7rem;
   font-weight: bolder;
-  color: rgb(28, 72, 142);
+  color: white;
+
   margin: 0;
-  padding: 1rem 0;
+
+  padding: 0.45rem 0.9rem;
+  border-radius: 0.8rem;
+  z-index: 2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-.div-tags span {
-  font-size: 0.6rem;
-  font-weight: bolder;
-  color: #ffffff;
-  margin: 0.3rem;
-  padding: 0.2rem 1rem;
-  border-radius: 1rem;
-  background-color: rgb(28, 72, 142);
-}
+
 
 .botao-card button {
   text-align: center;
@@ -90,36 +104,39 @@ a {
     width: 90vw;
     height: 10rem;
     padding-bottom: 0.1rem;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.48);
     margin-left: 0rem;
     border-radius: 0.3rem;
   }
 
-  .conteiner-card img {
-    width: 10rem;
+  .cardImagem {
     height: 100%;
-    max-height: 5rem;
+    border-radius: 1.5rem;
   }
 
-  .div-tags h2 {
-    font-size: 1.2rem;
-    padding: 0.5rem 0;
+  .cardImagem img {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    border-radius: 0.3rem;
   }
 
-  .div-tags span {
-    font-size: 0.5rem;
-    padding: 0.1rem 0.5rem;
-    margin-right: 0.2rem;
+
+  .cardImagem .projLogo {
+    width: 4.5rem;
+    height: 4.5rem;
+    top: 1rem;
+    right: 17rem;
+  }
+
+  .titulo-overlay {
+    font-size: 1.1rem;
+    left: 0.7rem;
+    bottom: 0.7rem;
+    padding: 0.35rem 0.7rem;
+    border-radius: 0.6rem;
   }
 
   .botao-card button {
     display: none;
-    font-size: 0.5rem;
-    line-height: 2rem;
-    padding-bottom: 1rem;
-    /* margin-top: 1.2rem; */
-    width: 10rem;
-    margin-bottom: -5rem;
   }
-  
 }
