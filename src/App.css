@@ -114,9 +114,16 @@ html {
     overflow: hidden;
   }
 
-  /* .scroll-container {
-    scroll-snap-type: none;
-  } */
+
+  /* remove scroll snap on mobile */
+  .containerPai {
+    scroll-snap-type: none;  
+    scroll-behavior: auto;   
+  }
+
+  .divPai {
+    scroll-snap-align: unset; 
+  }
 
 
 }

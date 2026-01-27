@@ -13,8 +13,7 @@ import Whatsapp from "../components/Whatsapp.tsx";
 function Home() {
   return (
     <>
-      {/* Canvas fixo e independente do scroll */}
-      {/* <Ondas key="ripple-canvas" /> */}
+
 
       <div className="containerPai" style={{ position: "relative", zIndex: 1 }}>
         <div className="home-pai">

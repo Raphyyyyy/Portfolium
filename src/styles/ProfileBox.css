@@ -113,7 +113,12 @@
     left: 13%;
   }
 
+  .background {
+    border: rgba(202, 202, 202, 0.236) 0.2rem solid;
+  }
+
   .backMargem {
+        display: none;
         position: absolute;
         top: 2rem;
         left: -2.2rem;
