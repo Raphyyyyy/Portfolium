@@ -13,13 +13,6 @@ function Projeto() {
   const { slug } = useParams();
   const projetos = useProjects();
 
-  const projeto = projetos.find((p) => p.slug === slug);
-
-  if (!projeto) return <p>Projeto não encontrado</p>;
-
-  const { title, metadata } = projeto;
-  const tags = metadata.fulltechs?.split(",").map((tag) => tag.trim()) || [];
-
   // Estado que controla se o menu ganhou fundo ao rolar
   const [scrolled, setScrolled] = useState(false);
 
@@ -35,17 +28,47 @@ function Projeto() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const projeto = projetos.find((p) => p.slug === slug);
+
+  // ✅ depois dos hooks, pode retornar cedo sem quebrar a ordem
+  if (!projeto) return <p>Projeto não encontrado</p>;
+
+  const { title, metadata } = projeto;
+
+  // separa as tags em um array
+  const tags =
+    metadata.techs?.split(",").map((tag) => tag.trim()).filter(Boolean) || [];
+
+  const fulltags =
+    metadata.fulltechs?.split(",").map((tag) => tag.trim()).filter(Boolean) || [];
+
+  // ✅ tags complementares (fulltechs sem repetir as principais)
+  const baseSet = new Set(tags.map((t) => t.toLowerCase()));
+  const extraTags = fulltags.filter((t) => !baseSet.has(t.toLowerCase()));
+
+  const isVideo = /\.(mp4|webm|ogg)$/i.test(metadata.videoprojeto || "");
+  const isGif = /\.gif$/i.test(metadata.videoprojeto || "");
+
   return (
     <>
       {/* menu */}
-
       <div className={`botoes-links ${scrolled ? "scrolled" : ""}`}>
         <BotaoVoltar />
-        <a href={metadata.linksite} target="_blank" rel="noopener noreferrer" className="linkProjeto">
+        <a
+          href={metadata.linksite}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="linkProjeto"
+        >
           IR PARA O SITE
         </a>
         {metadata.linkcode && (
-          <a href={metadata.linkcode} target="_blank" rel="noopener noreferrer" className="linkProjeto">
+          <a
+            href={metadata.linkcode}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="linkProjeto"
+          >
             VER O CÓDIGO
           </a>
         )}
@@ -59,7 +82,6 @@ function Projeto() {
           "--cor3": metadata.cor3 || "rgba(0, 17, 253, 0.52)",
         }}
       >
-
         <BackgroundText texto={title.replace(/\s+/g, "").toUpperCase()} />
 
         {/* ícone central */}
@@ -70,35 +92,99 @@ function Projeto() {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <img src={dandelionIcon} alt="Ícone Dandelion" className="dandelionIcon" />
+          <img
+            src={dandelionIcon}
+            alt="Ícone Dandelion"
+            className="dandelionIcon"
+          />
         </motion.div>
 
         <div className="projetoHead">
           <div className="sobrepor" />
-          <img src={`${import.meta.env.BASE_URL}${metadata.iconimage}`} alt={title} className="imgProjetoHead" />
+          <img
+            src={`${import.meta.env.BASE_URL}${metadata.iconimage}`}
+            alt={title}
+            className="imgProjetoHead"
+          />
 
-          <h1 className="projetoTitulo">
-            {title.toUpperCase()}
-          </h1>
+          <h1 className="projetoTitulo">{title.toUpperCase()}</h1>
         </div>
 
-        <div className="tags">
-          {tags.map((tag) => (
-            <motion.span
-              key={tag}
-              className="tag"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{
-                duration: 2.2,
-                ease: "easeOut",
-              }}
-            >
-              {tag}
-            </motion.span>
-          ))}
-        </div>
+        {/* TAGS (curtas / principais) */}
+        {tags.length > 0 && (
+          <div className="tags">
+            {tags.map((tag) => (
+              <motion.span
+                key={tag}
+                className="tag"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{
+                  duration: 2.2,
+                  ease: "easeOut",
+                }}
+              >
+                {tag}
+              </motion.span>
+            ))}
+          </div>
+        )}
+
+        {/* Vídeo ou GIF do projeto */}
+        {metadata.videoprojeto && (
+          <div className="projVideo">
+            {isVideo ? (
+              <motion.video
+                src={`${import.meta.env.BASE_URL}${metadata.videoprojeto}`}
+                autoPlay
+                loop
+                muted
+                playsInline
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{
+                  duration: 2.2,
+                  ease: "easeOut",
+                }}
+              />
+            ) : isGif ? (
+              <motion.img
+                src={`${import.meta.env.BASE_URL}${metadata.videoprojeto}`}
+                alt={title}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{
+                  duration: 2.2,
+                  ease: "easeOut",
+                }}
+              />
+            ) : null}
+          </div>
+        )}
+
+        {/* TAGS COMPLEMENTARES (vindas do fulltechs sem repetir as principais) */}
+        {extraTags.length > 0 && (
+          <div className="tags tagsFull">
+            {extraTags.map((tag) => (
+              <motion.span
+                key={tag}
+                className="tag tagFull"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{
+                  duration: 2.2,
+                  ease: "easeOut",
+                }}
+              >
+                {tag}
+              </motion.span>
+            ))}
+          </div>
+        )}
 
         {/* BLOCO 1 */}
         <motion.div
@@ -192,7 +278,6 @@ function Projeto() {
             <p dangerouslySetInnerHTML={{ __html: metadata.texto4 }} />
           </div>
         </motion.div>
-
       </div>
     </>
   );
