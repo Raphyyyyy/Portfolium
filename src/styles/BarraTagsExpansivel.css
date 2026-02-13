@@ -1,0 +1,141 @@
+/* 
+  Container geral do componente
+  - width 100% pra pegar a tela toda
+  - display flex em coluna: tags em cima, barra embaixo
+*/
+.barraTagsExpansivel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+
+  /* evita qualquer "gap invisível" por margin default de elementos */
+  margin: 0;
+  padding: 2rem 0;
+}
+
+/*
+  Painel que segura as tags
+  - overflow hidden: não corta no sentido de "amputar", só esconde o que passa
+  - quando fechado, ele fica baixinho (alturaVisivelFechado no TSX)
+*/
+.painelTags {
+  width: 100%;
+  overflow: hidden;
+
+  /* importante: sem margin/padding que causem espaço invisível */
+  margin: 0;
+  padding-top: 0.5rem;
+
+  /* deixa as tags "encostadas" na barra sem cortar */
+  box-sizing: border-box;
+}
+
+/*
+  Onde as tags ficam de verdade
+  - display flex
+  - wrap
+  - centralizado igual seu layout de tags
+*/
+.conteudoTags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  /* importante: sem margin padrão, senão cria o "buraco invisível" */
+  margin: 0;
+
+  /*
+    padding-bottom pequeno ajuda a "pontinha" parecer mais natural
+    sem encostar duro demais no corte do painel
+  */
+  padding: 0 0 0.35rem 0;
+}
+
+/*
+  Estilo das tags (o rosa)
+  Se você quiser reaproveitar sua .tag e .tagFull, pode trocar a classe aqui depois.
+*/
+.tagRosa {
+  background-color: var(--cor1);
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+
+  /* garante que o "corte" mostre uma pontinha limpa */
+  line-height: 1.2;
+}
+
+/*
+  Barra branca (fica embaixo das tags)
+  Requisitos:
+  - 100% largura
+  - 2rem de altura
+  - círculo no centro com "+"
+*/
+.barraBranca {
+  width: 100%;
+  height: 0.5rem;
+
+  background: white;
+  box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.12);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* importante pra ela nunca ficar "pra trás" das tags ao arrastar */
+  position: relative;
+  z-index: 5;
+
+  /* evita qualquer gap */
+  margin: 0;
+  padding: 0;
+
+  /* cursor pra indicar que é interativo */
+  cursor: pointer;
+
+  /* deixa a barra "pegável" no mobile */
+  touch-action: none;
+}
+
+/*
+  Círculo do + no centro
+*/
+.circuloMais {
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 999px;
+
+  background: white;
+  box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.18);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*
+  O "+" em si
+  cor vem da variável CSS --corDoMais (setada pelo TSX)
+*/
+.iconeMais {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--corDoMais);
+  display: inline-block;
+  transform: rotate(0deg);
+  transition: transform 0.25s ease;
+}
+
+.iconeMais.rotacionado {
+  transform: rotate(45deg);
+}
+
+/* opcional: feedback quando está arrastando */
+.barraBranca.arrastando {
+  filter: brightness(0.98);
+}

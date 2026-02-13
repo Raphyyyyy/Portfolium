@@ -1,9 +1,12 @@
 import Tradutor from "../Hooks/Tradutor";
-import { useEffect, useState } from "react"; // 🟦 ADIÇÃO
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useProjects } from "../context/ProjectContext";
 import { motion } from "framer-motion";
+
+import BarraTagsExpansivel from "../components/BarraTagsExpansivel";
 import BotaoVoltar from "../Hooks/BotaoVoltar";
+
 import "../styles/Projeto.css";
 import dandelionIcon from "../../public/assets/illustration-plant/8608.jpg";
 import BackgroundText from "../components/BackgroundText";
@@ -30,7 +33,7 @@ function Projeto() {
 
   const projeto = projetos.find((p) => p.slug === slug);
 
-  // ✅ depois dos hooks, pode retornar cedo sem quebrar a ordem
+  // depois dos hooks, pode retornar cedo sem quebrar a ordem
   if (!projeto) return <p>Projeto não encontrado</p>;
 
   const { title, metadata } = projeto;
@@ -165,8 +168,9 @@ function Projeto() {
           </div>
         )}
 
+
         {/* TAGS COMPLEMENTARES (vindas do fulltechs sem repetir as principais) */}
-        {extraTags.length > 0 && (
+        {/* {extraTags.length > 0 && (
           <div className="tags tagsFull">
             {extraTags.map((tag) => (
               <motion.span
@@ -184,7 +188,22 @@ function Projeto() {
               </motion.span>
             ))}
           </div>
-        )}
+        )} */}
+
+
+      {/* 
+        TAGS COMPLEMENTARES EXPANSÍVEIS
+        - Abrem ao clicar no "+"
+        - Abrem ao arrastar para baixo
+        - Empurram o layout
+      */}
+      <BarraTagsExpansivel
+        tags={extraTags}
+        corDoMais={metadata.cor1 || "rgba(0, 195, 255, 0.4)"}
+        alturaMaximaArrasto={240}
+        limiteParaAbrir={100}
+      />
+
 
         {/* BLOCO 1 */}
         <motion.div
