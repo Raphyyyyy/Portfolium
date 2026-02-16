@@ -161,11 +161,17 @@
 
 .projTitulo {
   margin-bottom: 1rem;
-  color: white;
-  background-color: color-mix(in srgb, var(--cor3) 90%, transparent);
+
   padding: 0.5rem;
   border-radius: 0.5rem;
+
   text-align: center;
+}
+
+.projTitulo h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+
 }
 
 .ProjImg {
