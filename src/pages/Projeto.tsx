@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useProjects } from "../context/ProjectContext";
 import { motion } from "framer-motion";
+import SeoProjeto from "../SEO/SeoProjeto";
 
 import BarraTagsExpansivel from "../components/BarraTagsExpansivel";
 import BotaoVoltar from "../Hooks/BotaoVoltar";
@@ -54,6 +55,13 @@ function Projeto() {
 
   return (
     <>
+      <SeoProjeto
+        slug={slug}
+        title={title}
+        tagsPrincipais={tags}
+        tagsExtras={extraTags}
+        metadata={metadata}
+      />
       {/* menu */}
       <div className={`botoes-links ${scrolled ? "scrolled" : ""}`}>
         <BotaoVoltar />
