@@ -1,0 +1,78 @@
+.galeria {
+  width: 70%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* desktop */
+.desktop {
+  grid-column: 1 / -1;
+  background: #19e0cf;
+  aspect-ratio: 16 / 9;
+}
+
+/* mobile */
+.mobile {
+  background: #f4a63d;
+  aspect-ratio: 9 / 16;
+}
+
+/* BASE DO ICONE */
+.icone {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+}
+
+/* ÍCONE MOBILE (EDITA AQUI) */
+.icone-mobile i {
+  font-size: 35px;
+  transform: translateY(-22px) translateX(-10px);
+}
+
+/* ÍCONE DESKTOP (EDITA AQUI) */
+.icone-desktop i {
+  font-size: 35px;
+
+  /* 🔧 ajusta aqui */
+  transform: translateY(-22px) translateX(-22px);
+}
+
+/* MOBILE RESPONSIVO */
+@media (max-width: 768px) {
+  .galeria {
+    width: 90%;
+  }
+
+  .icone {
+    width: 24px;
+    height: 24px;
+    right: 8px;
+    bottom: 8px;
+  }
+
+  .icone-mobile i {
+  font-size: 20px;
+  transform: translateY(-10px) translateX(59px);
+  }
+
+  .icone-desktop i {
+  font-size: 20px;
+  transform: translateY(-10px) translateX(55px);
+  }
+}

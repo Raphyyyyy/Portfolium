@@ -11,20 +11,18 @@ import BotaoVoltar from "../Hooks/BotaoVoltar";
 import "../styles/Projeto.css";
 import dandelionIcon from "../../public/assets/illustration-plant/8608.jpg";
 import BackgroundText from "../components/BackgroundText";
-import macBook from "../../public/assets/pc.png";
+
+import Galeria from "../components/Galeria";
 
 function Projeto() {
   const { slug } = useParams();
   const projetos = useProjects();
-
-  // Estado que controla se o menu ganhou fundo ao rolar
   const [scrolled, setScrolled] = useState(false);
 
-  // Verifica o scroll e aplica a classe "scrolled" quando passa 30% do viewport
   useEffect(() => {
     function handleScroll() {
       const scrollY = window.scrollY;
-      const triggerPoint = window.innerHeight * 0.3; // 30% do viewport
+      const triggerPoint = window.innerHeight * 0.3;
       setScrolled(scrollY > triggerPoint);
     }
 
@@ -34,19 +32,16 @@ function Projeto() {
 
   const projeto = projetos.find((p) => p.slug === slug);
 
-  // depois dos hooks, pode retornar cedo sem quebrar a ordem
   if (!projeto) return <p>Projeto não encontrado</p>;
 
   const { title, metadata } = projeto;
 
-  // separa as tags em um array
   const tags =
     metadata.techs?.split(",").map((tag) => tag.trim()).filter(Boolean) || [];
 
   const fulltags =
     metadata.fulltechs?.split(",").map((tag) => tag.trim()).filter(Boolean) || [];
 
-  // ✅ tags complementares (fulltechs sem repetir as principais)
   const baseSet = new Set(tags.map((t) => t.toLowerCase()));
   const extraTags = fulltags.filter((t) => !baseSet.has(t.toLowerCase()));
 
@@ -62,7 +57,7 @@ function Projeto() {
         tagsExtras={extraTags}
         metadata={metadata}
       />
-      {/* menu */}
+
       <div className={`botoes-links ${scrolled ? "scrolled" : ""}`}>
         <BotaoVoltar />
         <a
@@ -91,11 +86,10 @@ function Projeto() {
           "--cor1": metadata.cor1 || "rgba(0, 195, 255, 0.4)",
           "--cor2": metadata.cor2 || "rgba(109, 83, 255, 0.52)",
           "--cor3": metadata.cor3 || "rgba(0, 17, 253, 0.52)",
-        }}
+        } as React.CSSProperties}
       >
         <BackgroundText texto={title.replace(/\s+/g, "").toUpperCase()} />
 
-        {/* ícone central */}
         <motion.div
           className="iconeProjeto"
           initial={{ opacity: 0, y: 30 }}
@@ -117,11 +111,9 @@ function Projeto() {
             alt={title}
             className="imgProjetoHead"
           />
-
           <h1 className="projetoTitulo">{title.toUpperCase()}</h1>
         </div>
 
-        {/* TAGS (curtas / principais) */}
         {tags.length > 0 && (
           <div className="tags">
             {tags.map((tag) => (
@@ -131,10 +123,7 @@ function Projeto() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{
-                  duration: 2.2,
-                  ease: "easeOut",
-                }}
+                transition={{ duration: 2.2, ease: "easeOut" }}
               >
                 {tag}
               </motion.span>
@@ -142,7 +131,6 @@ function Projeto() {
           </div>
         )}
 
-        {/* Vídeo ou GIF do projeto */}
         {metadata.videoprojeto && (
           <div className="projVideo">
             {isVideo ? (
@@ -155,10 +143,7 @@ function Projeto() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{
-                  duration: 2.2,
-                  ease: "easeOut",
-                }}
+                transition={{ duration: 2.2, ease: "easeOut" }}
               />
             ) : isGif ? (
               <motion.img
@@ -167,53 +152,19 @@ function Projeto() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{
-                  duration: 2.2,
-                  ease: "easeOut",
-                }}
+                transition={{ duration: 2.2, ease: "easeOut" }}
               />
             ) : null}
           </div>
         )}
 
+        <BarraTagsExpansivel
+          tags={extraTags}
+          corDoMais={metadata.cor1 || "rgba(0, 195, 255, 0.4)"}
+          alturaMaximaArrasto={240}
+          limiteParaAbrir={100}
+        />
 
-        {/* TAGS COMPLEMENTARES (vindas do fulltechs sem repetir as principais) */}
-        {/* {extraTags.length > 0 && (
-          <div className="tags tagsFull">
-            {extraTags.map((tag) => (
-              <motion.span
-                key={tag}
-                className="tag tagFull"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{
-                  duration: 2.2,
-                  ease: "easeOut",
-                }}
-              >
-                {tag}
-              </motion.span>
-            ))}
-          </div>
-        )} */}
-
-
-      {/* 
-        TAGS COMPLEMENTARES EXPANSÍVEIS
-        - Abrem ao clicar no "+"
-        - Abrem ao arrastar para baixo
-        - Empurram o layout
-      */}
-      <BarraTagsExpansivel
-        tags={extraTags}
-        corDoMais={metadata.cor1 || "rgba(0, 195, 255, 0.4)"}
-        alturaMaximaArrasto={240}
-        limiteParaAbrir={100}
-      />
-
-
-        {/* BLOCO 1 */}
         <motion.div
           className="projetoGrupo"
           initial={{ opacity: 0, y: 40 }}
@@ -227,16 +178,24 @@ function Projeto() {
             </div>
             <p dangerouslySetInnerHTML={{ __html: metadata.texto1 }} />
           </div>
-          <div className="ProjImg ProjImgComPC">
-            <img
-              src={`${import.meta.env.BASE_URL}${metadata.image1}`}
-              alt={title}
-              className="imagemGrupo imagemTela"
-            />
-            <img src={macBook} className="imagemPC" />
-          </div>
         </motion.div>
 
+        <motion.div
+          className="projetoGrupo"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        >
+          <Galeria
+            itens={[
+              { tipo: "mobile" },
+              { tipo: "desktop" },
+              { tipo: "desktop" },
+              { tipo: "mobile" },
+            ]}
+          />
+        </motion.div>
       </div>
     </>
   );
