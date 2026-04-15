@@ -1,4 +1,3 @@
-import Tradutor from "../Hooks/Tradutor";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useProjects } from "../context/ProjectContext";
@@ -11,7 +10,6 @@ import BotaoVoltar from "../Hooks/BotaoVoltar";
 import "../styles/Projeto.css";
 import dandelionIcon from "../../public/assets/illustration-plant/8608.jpg";
 import BackgroundText from "../components/BackgroundText";
-
 import Galeria from "../components/Galeria";
 
 function Projeto() {
@@ -48,6 +46,18 @@ function Projeto() {
   const isVideo = /\.(mp4|webm|ogg)$/i.test(metadata.videoprojeto || "");
   const isGif = /\.gif$/i.test(metadata.videoprojeto || "");
 
+  // ✅ AQUI ESTÁ A GALERIA CORRETA (SEM DUPLICAÇÃO)
+  const imagensGaleria = [
+    metadata?.image1 || "",
+    metadata?.image2 || "",
+    metadata?.image3 || "",
+    metadata?.image4 || "",
+    metadata?.image5 || "",
+    metadata?.image6 || "",
+    metadata?.image7 || "",
+    metadata?.image8 || "",
+  ];
+
   return (
     <>
       <SeoProjeto
@@ -60,6 +70,7 @@ function Projeto() {
 
       <div className={`botoes-links ${scrolled ? "scrolled" : ""}`}>
         <BotaoVoltar />
+
         <a
           href={metadata.linksite}
           target="_blank"
@@ -68,6 +79,7 @@ function Projeto() {
         >
           IR PARA O SITE
         </a>
+
         {metadata.linkcode && (
           <a
             href={metadata.linkcode}
@@ -82,11 +94,13 @@ function Projeto() {
 
       <div
         className="projetoPai"
-        style={{
-          "--cor1": metadata.cor1 || "rgba(0, 195, 255, 0.4)",
-          "--cor2": metadata.cor2 || "rgba(109, 83, 255, 0.52)",
-          "--cor3": metadata.cor3 || "rgba(0, 17, 253, 0.52)",
-        } as React.CSSProperties}
+        style={
+          {
+            "--cor1": metadata.cor1 || "rgba(0, 195, 255, 0.4)",
+            "--cor2": metadata.cor2 || "rgba(109, 83, 255, 0.52)",
+            "--cor3": metadata.cor3 || "rgba(0, 17, 253, 0.52)",
+          } as React.CSSProperties
+        }
       >
         <BackgroundText texto={title.replace(/\s+/g, "").toUpperCase()} />
 
@@ -97,11 +111,7 @@ function Projeto() {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <img
-            src={dandelionIcon}
-            alt="Ícone Dandelion"
-            className="dandelionIcon"
-          />
+          <img src={dandelionIcon} alt="Ícone" className="dandelionIcon" />
         </motion.div>
 
         <div className="projetoHead">
@@ -143,7 +153,7 @@ function Projeto() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 2.2, ease: "easeOut" }}
+                transition={{ duration: 2.2 }}
               />
             ) : isGif ? (
               <motion.img
@@ -152,7 +162,7 @@ function Projeto() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 2.2, ease: "easeOut" }}
+                transition={{ duration: 2.2 }}
               />
             ) : null}
           </div>
@@ -170,32 +180,17 @@ function Projeto() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
+          transition={{ duration: 1.2 }}
         >
           <div className="ProjTxt">
-            <div className="projTitulo">
-              <h2>{metadata.titulo1}</h2>
-            </div>
+            <h2>{metadata.titulo1}</h2>
             <p dangerouslySetInnerHTML={{ __html: metadata.texto1 }} />
           </div>
         </motion.div>
 
-        <motion.div
-          className="projetoGrupo"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-        >
-          <Galeria
-            itens={[
-              { tipo: "mobile" },
-              { tipo: "desktop" },
-              { tipo: "desktop" },
-              { tipo: "mobile" },
-            ]}
-          />
-        </motion.div>
+        {/* ✅ GALERIA FINAL */}
+        <Galeria imagens={imagensGaleria} />
+        {console.log("Renderizando galeria: " + imagensGaleria)}
       </div>
     </>
   );

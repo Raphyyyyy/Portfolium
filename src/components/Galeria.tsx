@@ -7,12 +7,15 @@ type CardItem = {
   ordem: number;
 };
 
+type GaleriaProps = {
+  imagens?: string[];
+};
+
 const cards: CardItem[] = [
   { tipo: "desktop", ordem: 1 },
   { tipo: "mobile", ordem: 2 },
   { tipo: "mobile", ordem: 3 },
   { tipo: "desktop", ordem: 4 },
-
   { tipo: "desktop", ordem: 5 },
   { tipo: "mobile", ordem: 6 },
   { tipo: "mobile", ordem: 7 },
@@ -24,13 +27,19 @@ const variants = {
   visible: { opacity: 1, y: 0 },
 };
 
-export default function Galeria() {
+export default function Galeria({ imagens = [] }: GaleriaProps) {
   const [iniciou, setIniciou] = useState(false);
 
   return (
     <section className="galeria">
-      {cards.map((item) => {
-        const primeiro = item.ordem === 1;
+      {cards.map((item, index) => {
+        const imagem = imagens[index];
+
+        if (!imagem || !imagem.trim()) {
+          return null;
+        }
+
+        const primeiroVisivel = index === imagens.findIndex((img) => img?.trim());
 
         return (
           <motion.div
@@ -39,30 +48,34 @@ export default function Galeria() {
             variants={variants}
             initial="hidden"
             animate={iniciou ? "visible" : "hidden"}
-            whileInView={primeiro ? "visible" : undefined}
-            viewport={primeiro ? { once: true, amount: 0.15 } : undefined}
-            onViewportEnter={primeiro ? () => setIniciou(true) : undefined}
+            whileInView={primeiroVisivel ? "visible" : undefined}
+            viewport={primeiroVisivel ? { once: true, amount: 0.15 } : undefined}
+            onViewportEnter={primeiroVisivel ? () => setIniciou(true) : undefined}
             transition={{
               duration: 0.3,
               delay: (item.ordem - 1) * 0.3,
               ease: "easeOut",
             }}
           >
-            <span
-              className={`icone ${
-                item.tipo === "mobile"
-                  ? "icone-mobile"
-                  : "icone-desktop"
-              }`}
-            >
-              <i
-                className={`bi ${
-                  item.tipo === "mobile"
-                    ? "bi-phone-fill"
-                    : "bi-display"
+            <>
+              <span
+                className={`icone ${
+                  item.tipo === "mobile" ? "icone-mobile" : "icone-desktop"
                 }`}
-              ></i>
-            </span>
+              >
+                <i
+                  className={`bi ${
+                    item.tipo === "mobile" ? "bi-phone-fill" : "bi-display"
+                  }`}
+                ></i>
+              </span>
+
+              <img
+                src={`${import.meta.env.BASE_URL}${imagem}`}
+                alt={`Imagem ${item.ordem}`}
+                className="galeria-img"
+              />
+            </>
           </motion.div>
         );
       })}

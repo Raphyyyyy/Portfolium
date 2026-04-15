@@ -17,7 +17,7 @@
 .desktop {
   grid-column: 1 / -1;
   background: #19e0cf;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 19 / 9;
 }
 
 /* mobile */
@@ -37,6 +37,7 @@
   align-items: center;
   justify-content: center;
   color: #000;
+  z-index: 100;
 }
 
 /* ÍCONE MOBILE (EDITA AQUI) */
