@@ -1,5 +1,5 @@
 .galeria {
-  width: 70%;
+  width: 95%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -16,13 +16,14 @@
 /* desktop */
 .desktop {
   grid-column: 1 / -1;
-  background: #19e0cf;
+  background: lightgray;
   aspect-ratio: 19 / 9;
+  margin-bottom: 2rem;
 }
 
 /* mobile */
 .mobile {
-  background: #f4a63d;
+  background: lightgray;
   aspect-ratio: 9 / 16;
 }
 
@@ -40,24 +41,24 @@
   z-index: 100;
 }
 
-/* ÍCONE MOBILE (EDITA AQUI) */
+/* ÍCONE MOBILE  */
 .icone-mobile i {
+  display: none;
   font-size: 35px;
   transform: translateY(-22px) translateX(-10px);
 }
 
-/* ÍCONE DESKTOP (EDITA AQUI) */
+/* ÍCONE DESKTOP */
 .icone-desktop i {
+  display: none;
   font-size: 35px;
-
-  /* 🔧 ajusta aqui */
   transform: translateY(-22px) translateX(-22px);
 }
 
 /* MOBILE RESPONSIVO */
 @media (max-width: 768px) {
   .galeria {
-    width: 90%;
+    width: 95%;
   }
 
   .icone {
@@ -75,5 +76,9 @@
   .icone-desktop i {
   font-size: 20px;
   transform: translateY(-10px) translateX(55px);
+  }
+
+  .desktop {
+  margin: 0;
   }
 }

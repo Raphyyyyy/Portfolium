@@ -21,12 +21,12 @@ function Home() {
 
         <meta
           name="description"
-          content="Portfólio de Rafael Nunes, Desenvolvedor Front-End especializado em Web Design, React, TypeScript, Vite e interfaces modernas com foco em performance e experiência do usuário."
+          content="Portfólio de Rafael Nunes, Desenvolvedor Front-End especializado em Web Design, React, TypeScript, Wordpress, Vite e interfaces modernas com foco em performance e experiência do usuário."
         />
 
         <meta
           name="keywords"
-          content="Desenvolvedor React, Desenvolvedor Front-End, Portfólio React, TypeScript, Vite, Framer Motion, UI UX"
+          content="Desenvolvedor React, Desenvolvedor Front-End, Portfólio React, TypeScript, Vite, Framer Motion,Wordpress , UI UX"
         />
 
         <meta property="og:title" content="Rafael Nunes | Desenvolvedor React e Web Designer" />

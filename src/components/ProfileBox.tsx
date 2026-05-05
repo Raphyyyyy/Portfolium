@@ -21,19 +21,20 @@ function ProfileBox() {
   return (
     <div className="container">
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{
-          opacity: [0, 1],
-          rotate: [0, 30],
-        }}
-        transition={{
-          duration: 1.5,
-          ease: "easeInOut",
-          delay: 0.5,
-        }}
-        className="background"
-      ></motion.div>
+<motion.div
+  className="background"
+  initial={{ opacity: 0 }}
+  whileInView={{
+    opacity: 1,
+    rotate: 30,
+  }}
+  viewport={{ once: true }}
+  transition={{
+    duration: 1.5,
+    ease: "easeInOut",
+    delay: 0.1,
+  }}
+/>
 
       <motion.div
         className="backMargem"

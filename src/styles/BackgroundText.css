@@ -33,7 +33,7 @@
 /* mobile */
 @media screen and (max-width: 768px) {
   .background_projetos {
-    font-size: 3.5rem;
+    font-size: 3.3rem;
     letter-spacing: 0.5rem;
     grid-auto-rows: 3rem; /* altura menor para telas pequenas */
     row-gap: 1rem;

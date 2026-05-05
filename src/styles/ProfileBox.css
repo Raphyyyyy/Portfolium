@@ -75,19 +75,20 @@
   /* Cada ícone ocupa uma coluna na terceira linha */
   grid-row: 3;
   /* Todos os ícones na terceira linha */
-  /* background-color: lightgreen; */
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 2rem;
-  padding-top: 10rem;
-  padding-left: 10rem;
-  margin-left: 2rem;
   gap: 1.5rem;
-  width: 15rem;
+  margin-right: 31%;
+
+  width: 100%;
+
 }
 
 .icone .iconeRedondo {
+  margin-top: 30rem;
+  margin-right: 1rem;
   width: 5rem;
   height: 5rem;
 }
@@ -98,9 +99,9 @@
 
 .icone .iconeRedondo:hover,
 .iconeComprido:hover {
-  filter: hue-rotate(240deg) saturate(200%) brightness(150%);
+  filter: hue-rotate(240deg) saturate(110%) brightness(150%);
   width: auto;
-  height: 4.5rem;
+  height: 5.5rem;
 }
 
 
@@ -118,15 +119,15 @@
   }
 
   .backMargem {
-        display: none;
+       
         position: absolute;
         top: 2rem;
-        left: -2.2rem;
-        width: 119%;
-        height: 80%;
+        left: -3.0rem;
+        width: 15rem;
+        height: 15rem;
         margin: 1rem 0 0 1rem;
         border: rgba(194, 211, 44, 0.089) 0.2rem solid;
-        rotate: 122deg;
+        rotate: 125deg;
     }
 
   .foto-perfil {
@@ -135,7 +136,7 @@
   }
 
     .background {
-        height: 80%;
+        height: 160%;
         width: 110%;
         top: 2.5rem;
         left: -1.6rem;
@@ -177,16 +178,17 @@
 
 
   .icone {
-    padding-left: 0rem;
-    padding-right: 4rem;
+    padding: 2rem 0 0 4rem;
     width: 100%;
-
+    gap: 0rem;
   }
 
   .icone .iconeRedondo {
     width: 3rem;
     height: 4rem;
     padding-top: 1rem;
+    margin-top: 16rem;
+    margin-right: 2.7rem;
   }
 
   .icone .iconeComprido {
