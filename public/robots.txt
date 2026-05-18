@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://raphyyyyy.github.io/Portfolium/sitemap.xml
+Sitemap: https://rafalex.dev/sitemap.xml

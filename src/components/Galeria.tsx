@@ -27,19 +27,43 @@ const variants = {
   visible: { opacity: 1, y: 0 },
 };
 
+const getSrc = (src: string) => `${import.meta.env.BASE_URL}${src}`;
+
+const isVideo = (src: string) => src.toLowerCase().endsWith(".mp4");
+
+function Media({ src, ordem }: { src: string; ordem: number }) {
+  const finalSrc = getSrc(src);
+
+  return isVideo(src) ? (
+    <video
+      src={finalSrc}
+      className="galeria-img"
+      autoPlay
+      muted
+      loop
+      playsInline
+    />
+  ) : (
+    <img
+      src={finalSrc}
+      alt={`Imagem ${ordem}`}
+      className="galeria-img"
+    />
+  );
+}
+
 export default function Galeria({ imagens = [] }: GaleriaProps) {
   const [iniciou, setIniciou] = useState(false);
+  const primeiroIndex = imagens.findIndex((img) => img?.trim());
 
   return (
     <section className="galeria">
       {cards.map((item, index) => {
-        const imagem = imagens[index];
+        const imagem = imagens[index]?.trim();
 
-        if (!imagem || !imagem.trim()) {
-          return null;
-        }
+        if (!imagem) return null;
 
-        const primeiroVisivel = index === imagens.findIndex((img) => img?.trim());
+        const primeiroVisivel = index === primeiroIndex;
 
         return (
           <motion.div
@@ -57,25 +81,8 @@ export default function Galeria({ imagens = [] }: GaleriaProps) {
               ease: "easeOut",
             }}
           >
-            <>
-              <span
-                className={`icone ${
-                  item.tipo === "mobile" ? "icone-mobile" : "icone-desktop"
-                }`}
-              >
-                <i
-                  className={`bi ${
-                    item.tipo === "mobile" ? "bi-phone-fill" : "bi-display"
-                  }`}
-                ></i>
-              </span>
 
-              <img
-                src={`${import.meta.env.BASE_URL}${imagem}`}
-                alt={`Imagem ${item.ordem}`}
-                className="galeria-img"
-              />
-            </>
+            <Media src={imagem} ordem={item.ordem} />
           </motion.div>
         );
       })}

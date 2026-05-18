@@ -2,8 +2,8 @@
   width: 95%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
 }
 
 .card {
@@ -11,74 +11,49 @@
   width: 100%;
   border-radius: 10px;
   overflow: hidden;
+  background: lightgray;
 }
 
 /* desktop */
 .desktop {
-  grid-column: 1 / -1;
-  background: lightgray;
+  grid-column: span 3;
   aspect-ratio: 19 / 9;
-  margin-bottom: 2rem;
+  height: 635px;
 }
 
 /* mobile */
 .mobile {
-  background: lightgray;
+  grid-column: span 1;
   aspect-ratio: 9 / 16;
+  height: 635px;
 }
 
-/* BASE DO ICONE */
-.icone {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #000;
-  z-index: 100;
-}
-
-/* ÍCONE MOBILE  */
-.icone-mobile i {
-  display: none;
-  font-size: 35px;
-  transform: translateY(-22px) translateX(-10px);
-}
-
-/* ÍCONE DESKTOP */
-.icone-desktop i {
-  display: none;
-  font-size: 35px;
-  transform: translateY(-22px) translateX(-22px);
+.galeria-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* MOBILE RESPONSIVO */
 @media (max-width: 768px) {
   .galeria {
     width: 95%;
-  }
-
-  .icone {
-    width: 24px;
-    height: 24px;
-    right: 8px;
-    bottom: 8px;
-  }
-
-  .icone-mobile i {
-  font-size: 20px;
-  transform: translateY(-10px) translateX(59px);
-  }
-
-  .icone-desktop i {
-  font-size: 20px;
-  transform: translateY(-10px) translateX(55px);
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
   }
 
   .desktop {
-  margin: 0;
+    grid-column: 1 / -1;
+    margin: 0;
+    aspect-ratio: 19 / 9;
+    height: auto;
+  }
+
+  .mobile {
+    grid-column: span 1;
+    aspect-ratio: 9 / 16;
+        height: auto;
+
   }
 }
