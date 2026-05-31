@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Habilidades from "../data/Habilidades";
 import BackgroundText from "./BackgroundText";
 import { useIsMobile } from "../Hooks/IsMobile"; 
+import SkillTabs from "./SkillTabs";
 import "../styles/Skill.css";
 
 function Skill() {
@@ -13,10 +14,10 @@ function Skill() {
   return (
     <>
       <BackgroundText texto="HABILIDADES" />
-      <div className="SkillDiv" id="skill">
-        <div className="skillCategorias">
+     <div className="SkillDiv" id="skill">
+          {/*<div className="skillCategorias">
 
-          {/* HARD SKILLS */}
+       
           <motion.div
             className="hardSkills"
             initial={{ opacity: 0, y: 40 }}
@@ -42,7 +43,7 @@ function Skill() {
             </div>
           </motion.div>
 
-          {/* SOFT SKILLS ismobile*/}
+
           {!isMobile && (
             <motion.div
               className="softSkills"
@@ -55,8 +56,9 @@ function Skill() {
             </motion.div>
           )}
 
-        </div>
-      </div>
+        </div> */}   <SkillTabs />
+      </div> 
+
     </>
   );
 }
