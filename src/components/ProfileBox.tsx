@@ -1,75 +1,23 @@
-import React, { useEffect, useState } from "react";
 import "../styles/ProfileBox.css";
 import github from "../assets/icones/github-logo.png";
 import linkedin from "../assets/icones/linkedin_logo_icon_147268.png";
 import curriculum from "../assets/icones/CVlogo.png";
 import { motion } from "framer-motion";
-import useIsMobile from "./IsMobile";
 
 function ProfileBox() {
-  const [fade, setFade] = useState(false);
-  const isMobile = useIsMobile();
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setFade(true);
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, []);
+  const texto =
+    "Desenvolvedor Front-End com foco em interfaces modernas, organização de código e experiência do usuário. Unindo programação e design para criar soluções claras, funcionais e visualmente consistentes, sempre priorizando legibilidade, usabilidade e propósito.";
 
   return (
     <div className="container">
+      <div className="background" />
 
-<motion.div
-  className="background"
-  initial={{ opacity: 0 }}
-  whileInView={{
-    opacity: 1,
-    rotate: 30,
-  }}
-  viewport={{ once: true }}
-  transition={{
-    duration: 1.5,
-    ease: "easeInOut",
-    delay: 0.1,
-  }}
-/>
-
-      <motion.div
-        className="backMargem"
-        initial={{ opacity: 0 }}
-        whileInView={{
-          opacity: [0, 1],
-          rotate: !isMobile ? 58 : 188,
-        }}
-        transition={{
-          duration: 1.5,
-          ease: "easeInOut",
-          delay: 0.5,
-        }}
-
-      ></motion.div>
-
-
-
-      <motion.div
-        className="texto2"
-        initial={{ opacity: 0 }}
-        whileInView={{
-          opacity: [0, 1],
-        }}
-        transition={{
-          duration: 2,
-          ease: "easeInOut",
-          delay: 0.7,
-        }}
-      >
-        Desenvolvedor Front-End com foco em interfaces modernas, organização de código 
-        e experiência do usuário. Unindo programação e design 
-        para criar soluções claras, funcionais e visualmente consistentes, 
+      <div className="texto2 textoDigitando">
+        Desenvolvedor Front-End com experiências nacionais e internacionais em React, TypeScript, WordPress, UI/UX, SEO técnico e performance web. 
+        Unindo programação e design
+        para criar soluções claras, funcionais e visualmente consistentes,
         sempre priorizando legibilidade, usabilidade e propósito.
-      </motion.div>
+      </div>
 
       <div className="icone">
         <a
@@ -77,23 +25,7 @@ function ProfileBox() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <motion.img
-            initial={{ opacity: 0 }}
-            whileInView={{
-              opacity: [0, 1],
-              scale: [0.5, 1.3, 1],
-              y: [0, 20, -4],
-            }}
-            exit={{ opacity: 0 }}
-            transition={{
-              duration: 2,
-              ease: "easeInOut",
-              delay: 1.2,
-            }}
-            src={github}
-            alt="github"
-            className="iconeRedondo"
-          />
+          <img src={github} alt="GitHub" className="iconeRedondo" />
         </a>
 
         <a
@@ -101,46 +33,16 @@ function ProfileBox() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <motion.img
-            initial={{ opacity: 0 }}
-            whileInView={{
-              opacity: [0, 1],
-              scale: [0.5, 1.3, 1],
-              y: [0, 20, 0],
-            }}
-            transition={{
-              duration: 2,
-              ease: "easeInOut",
-              delay: 1.4,
-            }}
-            src={linkedin}
-            alt="linkedin"
-            className="iconeRedondo"
-          />
+          <img src={linkedin} alt="LinkedIn" className="iconeRedondo" />
         </a>
 
-          <a
-            href="https://github.com/Raphyyyyy/Portfolium/raw/main/CV_Rafael_Alexandre_Nunes_.pdf"
-            download="Rafael_Alexandre_Nunes_CV.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-          <motion.img
-            initial={{ opacity: 0 }}
-            whileInView={{
-              opacity: [0, 1],
-              scale: [0.5, 1.3, 1],
-              y: [0, 20, 0],
-            }}
-            transition={{
-              duration: 2,
-              ease: "easeInOut",
-              delay: 1.6,
-            }}
-            src={curriculum}
-            alt="curriculum"
-            className="iconeRedondo"
-          />
+        <a
+          href="https://github.com/Raphyyyyy/Portfolium/raw/main/CV_Rafael_Alexandre_Nunes_.pdf"
+          download="Rafael_Alexandre_Nunes_CV.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={curriculum} alt="Currículo" className="iconeRedondo" />
         </a>
       </div>
     </div>
