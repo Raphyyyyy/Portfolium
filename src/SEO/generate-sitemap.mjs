@@ -1,25 +1,26 @@
 // src/SEO/generate-sitemap.mjs
-// Gera dist/sitemap.xml usando a lista de slugs em src/SEO/projects-slugs.json
-// Compatível com GitHub Pages usando basePath "/Portfolium"
+// Gera dist/sitemap.xml para o domínio https://rafalex.dev
+// usando a lista de slugs em src/SEO/projects-slugs.json
 
 import fs from "node:fs";
 import path from "node:path";
 
-const siteOrigin = "https://raphyyyyy.github.io"; // ✅ seu domínio atual
-const basePath = "/Portfolium"; // ✅ GitHub Pages do repo
+const rootUrl = "https://rafalex.dev";
 
-const rootUrl = `${siteOrigin}${basePath}`;
 const distDir = path.resolve(process.cwd(), "dist");
 const outputPath = path.join(distDir, "sitemap.xml");
 
-const slugsPath = path.resolve(process.cwd(), "src/SEO/projects-slugs.json");
+const slugsPath = path.resolve(
+  process.cwd(),
+  "src/SEO/projects-slugs.json"
+);
 
 function isoToday() {
   return new Date().toISOString().split("T")[0];
 }
 
-function escapeXml(str) {
-  return String(str)
+function escapeXml(value) {
+  return String(value)
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
@@ -50,15 +51,26 @@ function readSlugs() {
     process.exit(1);
   }
 
-  const raw = fs.readFileSync(slugsPath, "utf-8");
-  const data = JSON.parse(raw);
+  try {
+    const raw = fs.readFileSync(slugsPath, "utf-8");
+    const data = JSON.parse(raw);
 
-  if (!data?.slugs || !Array.isArray(data.slugs)) {
-    console.error("❌ projects-slugs.json precisa ter { \"slugs\": [ ... ] }");
+    if (!data?.slugs || !Array.isArray(data.slugs)) {
+      console.error(
+        '❌ projects-slugs.json precisa ter o formato { "slugs": ["projeto-1", "projeto-2"] }'
+      );
+      process.exit(1);
+    }
+
+    return data.slugs
+      .filter(Boolean)
+      .map(String)
+      .map((slug) => slug.trim())
+      .filter(Boolean);
+  } catch (error) {
+    console.error("❌ Erro ao ler projects-slugs.json:", error.message);
     process.exit(1);
   }
-
-  return data.slugs.filter(Boolean).map(String);
 }
 
 function buildSitemapXml(slugs) {
@@ -67,15 +79,21 @@ function buildSitemapXml(slugs) {
   // Home
   urls.push(urlEntry(`${rootUrl}/`, "weekly", "1.0"));
 
-  // Rotas de projeto
+  // Páginas individuais de projeto
   for (const slug of slugs) {
-    urls.push(urlEntry(`${rootUrl}/projeto/${slug}`, "monthly", "0.8"));
+    const encodedSlug = encodeURIComponent(slug);
+
+    urls.push(
+      urlEntry(
+        `${rootUrl}/projeto/${encodedSlug}`,
+        "monthly",
+        "0.8"
+      )
+    );
   }
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.join("\n")}
 </urlset>
 `;
@@ -83,12 +101,19 @@ ${urls.join("\n")}
 
 function writeFile(filePath, content) {
   fs.writeFileSync(filePath, content, "utf-8");
-  console.log(`✅ sitemap gerado em: ${filePath}`);
+  console.log(`✅ Sitemap gerado em: ${filePath}`);
 }
 
-(function main() {
+function main() {
   ensureDist();
+
   const slugs = readSlugs();
   const xml = buildSitemapXml(slugs);
+
   writeFile(outputPath, xml);
-})();
+
+  console.log(`✅ ${slugs.length + 1} URLs adicionadas ao sitemap.`);
+  console.log(`🌐 Domínio utilizado: ${rootUrl}`);
+}
+
+main();
