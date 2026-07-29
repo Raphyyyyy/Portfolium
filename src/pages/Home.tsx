@@ -37,10 +37,7 @@ function Home() {
 
         <meta property="og:type" content="website" />
 
-        <link
-          rel="canonical"
-          href="https://raphyyyyy.github.io/Portfolium/"
-        />
+      <link rel="canonical" href="https://rafalex.dev/" />
       </Helmet>
 
       {/* SEU SITE VISUAL */}
