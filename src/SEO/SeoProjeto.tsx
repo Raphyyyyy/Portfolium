@@ -9,7 +9,7 @@ type SeoProjetoProps = {
   metadata?: any;
 
   // quando for mudar o dominio pra (AWS), muda num lugar só.
-  siteOrigin?: string; // ex: https://raphyyyyy.github.io
+  siteOrigin?: string; // ex: https://rafalex.dev
 };
 
 export default function SeoProjeto({
@@ -18,7 +18,7 @@ export default function SeoProjeto({
   tagsPrincipais = [],
   tagsExtras = [],
   metadata,
-  siteOrigin = "https://raphyyyyy.github.io",
+  siteOrigin = "https://rafalex.dev",
 }: SeoProjetoProps) {
   const basePathSemBarraFinal = (import.meta.env.BASE_URL || "/").replace(
     /\/$/,
