@@ -116,4 +116,17 @@ function main() {
   console.log(`🌐 Domínio utilizado: ${rootUrl}`);
 }
 
+
+
 main();
+
+
+// Gera uma entrada HTML para cada projeto no GitHub Pages.
+for (const slug of readSlugs()) {
+  const directory = path.join(distDir, "projeto", slug);
+  fs.mkdirSync(directory, { recursive: true });
+  fs.copyFileSync(
+    path.join(distDir, "index.html"),
+    path.join(directory, "index.html")
+  );
+}
